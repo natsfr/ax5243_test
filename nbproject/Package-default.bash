@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/BPSK_APRS_nomcc.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=BPSK_APRS_nomcc.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=bpskaprsnomcc.x/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/F4IHX_Tracker.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=F4IHX_Tracker.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=f4ihxtracker.x/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/bpskaprsnomcc.x/bin
+makeDirectory ${TMPDIR}/f4ihxtracker.x/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/bpskaprsnomcc.x.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/f4ihxtracker.x.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/bpskaprsnomcc.x.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/f4ihxtracker.x.tar *
 checkReturnCode
 
 # Cleanup

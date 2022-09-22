@@ -121,7 +121,7 @@ void conf_pins() {
     // B15: GPS_PPS
     CNPDB = 0x0000;
     CNPUB = 0x2310;
-    LATB = 0x0010;
+    LATB = 0x2010;
     ANSELB = 0x0000;
     TRISB = 0xC0EF;
     
@@ -184,23 +184,29 @@ void conf_spi_radio() {
     
     // FP = 50MHz
     // Baud Rate = Fp / (2 * (BRG + 1))
-    SPI2BRGLbits.BRG = 3; // => 6.25 MHz
+    //SPI2BRGLbits.BRG = 3; // => 6.25 MHz
+    SPI2BRGLbits.BRG = 10; // => 2.27 MHz
     
     SPI2CON1bits.MODE16 = 0;
-    SPI2CON1bits.MODE32 = 0;
+    SPI2CON1bits.MODE32 = 0; // 8 bit word
     SPI2CON1bits.MSTEN = 1;
     SPI2CON1bits.CKE = 1;
     SPI2CON1bits.CKP = 0;
     
     SPI2CON1Hbits.FRMEN = 0;
     
-    SPI2CON1Hbits.MSSEN = 1;
+    SPI2CON1Hbits.MSSEN = 0; // Driving CS with GPIO
     
-    SPI2CON2Lbits.WLENGTH = 0x17; // 24 bit length
+    //SPI2CON2Lbits.WLENGTH = 0x17; // 24 bit length
+    SPI2CON2Lbits.WLENGTH = 0x00; // Use MODE16/MODE32
     
     SPI2CON1bits.SPISIDL = 0;
     
     SPI2STATLbits.SPIROV = 0; // No Receive Overflow has occurred
     SPI2CON1bits.SPIEN = 1;
      // Enable SPI module
+}
+
+void rf_cs(uint8_t status) {
+    PORTBbits.RB4 = status & 0x01;
 }

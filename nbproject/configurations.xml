@@ -1,11 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="65">
   <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="AX5043_NBM" displayName="AX5043_NBM" projectFiles="true">
+      <logicalFolder name="inc" displayName="inc" projectFiles="true">
+        <logicalFolder name="AX5043" displayName="AX5043" projectFiles="true">
+          <itemPath>AX5043_NBM/inc/AX5043/ax5043_baseband.h</itemPath>
+          <itemPath>AX5043_NBM/inc/AX5043/ax5043_experimental.h</itemPath>
+          <itemPath>AX5043_NBM/inc/AX5043/ax5043_fifo.h</itemPath>
+          <itemPath>AX5043_NBM/inc/AX5043/ax5043_general.h</itemPath>
+          <itemPath>AX5043_NBM/inc/AX5043/ax5043_gpio.h</itemPath>
+          <itemPath>AX5043_NBM/inc/AX5043/ax5043_interface.h</itemPath>
+          <itemPath>AX5043_NBM/inc/AX5043/ax5043_irq.h</itemPath>
+          <itemPath>AX5043_NBM/inc/AX5043/ax5043_lposc.h</itemPath>
+          <itemPath>AX5043_NBM/inc/AX5043/ax5043_packet.h</itemPath>
+          <itemPath>AX5043_NBM/inc/AX5043/ax5043_pllparam.h</itemPath>
+          <itemPath>AX5043_NBM/inc/AX5043/ax5043_pwr.h</itemPath>
+          <itemPath>AX5043_NBM/inc/AX5043/ax5043_regs.h</itemPath>
+          <itemPath>AX5043_NBM/inc/AX5043/ax5043_rxparam.h</itemPath>
+          <itemPath>AX5043_NBM/inc/AX5043/ax5043_rxtracking.h</itemPath>
+          <itemPath>AX5043_NBM/inc/AX5043/ax5043_synth.h</itemPath>
+          <itemPath>AX5043_NBM/inc/AX5043/ax5043_timer.h</itemPath>
+          <itemPath>AX5043_NBM/inc/AX5043/ax5043_txparam.h</itemPath>
+        </logicalFolder>
+        <itemPath>AX5043_NBM/inc/radioCommands.h</itemPath>
+        <itemPath>AX5043_NBM/inc/radioConfigs.h</itemPath>
+        <itemPath>AX5043_NBM/inc/radio.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="src" displayName="src" projectFiles="true">
+        <logicalFolder name="AX5043" displayName="AX5043" projectFiles="true">
+          <itemPath>AX5043_NBM/src/AX5043/ax5043_fifo.c</itemPath>
+          <itemPath>AX5043_NBM/src/AX5043/ax5043_gpio.c</itemPath>
+          <itemPath>AX5043_NBM/src/AX5043/ax5043_txparam.c</itemPath>
+          <itemPath>AX5043_NBM/src/AX5043/ax5043_rxtracking.c</itemPath>
+          <itemPath>AX5043_NBM/src/AX5043/ax5043_packet.c</itemPath>
+          <itemPath>AX5043_NBM/src/AX5043/ax5043_timer.c</itemPath>
+          <itemPath>AX5043_NBM/src/AX5043/ax5043_general.c</itemPath>
+          <itemPath>AX5043_NBM/src/AX5043/ax5043_irq.c</itemPath>
+          <itemPath>AX5043_NBM/src/AX5043/ax5043_experimental.c</itemPath>
+          <itemPath>AX5043_NBM/src/AX5043/ax5043_interface.c</itemPath>
+          <itemPath>AX5043_NBM/src/AX5043/ax5043_synth.c</itemPath>
+          <itemPath>AX5043_NBM/src/AX5043/ax5043_baseband.c</itemPath>
+          <itemPath>AX5043_NBM/src/AX5043/ax5043_rxparam.c</itemPath>
+          <itemPath>AX5043_NBM/src/AX5043/ax5043_pwr.c</itemPath>
+          <itemPath>AX5043_NBM/src/AX5043/ax5043_pllparam.c</itemPath>
+          <itemPath>AX5043_NBM/src/AX5043/ax5043_lposc.c</itemPath>
+        </logicalFolder>
+        <itemPath>AX5043_NBM/src/radioConfigs.c</itemPath>
+        <itemPath>AX5043_NBM/src/radioCommands.c</itemPath>
+      </logicalFolder>
+    </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>hw.h</itemPath>
-      <itemPath>ax5243.h</itemPath>
+      <itemPath>AX5043_NBM/MAX_M8.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -16,7 +64,6 @@
                    projectFiles="true">
       <itemPath>main.c</itemPath>
       <itemPath>hw.c</itemPath>
-      <itemPath>ax5243.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -26,6 +73,9 @@
       <itemPath>MODCFGP.png</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>AX5043_NBM</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">
@@ -85,7 +135,8 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="expand-pragma-config" value="false"/>
-        <property key="extra-include-directories" value=""/>
+        <property key="extra-include-directories"
+                  value="AX5043_NBM/inc;AX5043_NBM/inc/AX5043"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="true"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -345,6 +396,8 @@
         <property key="memories.programmemory.ranges" value="0-aeff"/>
         <property key="memories.rww" value="true"/>
         <property key="poweroptions.powerenable" value="false"/>
+        <property key="programmerToGoFilePath"
+                  value="/home/nats/MPLABXProjects/BPSK_APRS_nomcc.X/debug/default/BPSK_APRS_nomcc_ptg"/>
         <property key="programmerToGoImageName" value="BPSK_APRS_nomcc_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
