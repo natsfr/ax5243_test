@@ -43,7 +43,6 @@
 void conf_clock();
 void conf_pins();
 void conf_spi_radio();
-//inline void led_set(uint16_t led_set);
 
 static inline void led_set(uint16_t led_set) {
     uint16_t old_val = LATB & ~LED_MASK;

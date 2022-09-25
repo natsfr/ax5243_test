@@ -16,38 +16,34 @@ _AX5043PLLParamSetVCOBias:
 	.file 1 "AX5043_NBM/src/AX5043/ax5043_pllparam.c"
 	.loc 1 9 0
 	.set ___PA___,1
-	lnk	#6
+	lnk	#4
 .LCFI0:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#3,w0
-	mov.b	w1,[w0]
+	mov.d	w8,[w15++]
+.LCFI1:
+	mov.b	w0,w8
+	mov.b	w1,w9
 	.loc 1 11 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#384,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 12 0
-	mov.b	[w14],w0
-	mov.b	w0,w1
 	mov.b	#-64,w0
-	and.b	w1,w0,w1
-	add	w14,#3,w0
-	mov.b	[w0],w0
-	ior.b	w1,w0,w0
-	mov.b	w0,[w14]
+	mov.b	[w15-8],w1
+	and.b	w1,w0,w0
+	ior.b	w9,w0,w0
+	mov.b	w0,[w15-8]
 	.loc 1 13 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#384,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteLongAddress
 	.loc 1 14 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -60,20 +56,17 @@ _AX5043PLLParamGetVCOBias:
 .LFB1:
 	.loc 1 21 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI1:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI2:
 	.loc 1 23 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#384,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 24 0
-	mov.b	[w14],w0
+	mov.b	[w15-4],w0
 	and.b	#63,w0
 	.loc 1 25 0
 	ulnk	
@@ -88,40 +81,34 @@ _AX5043PLLParamEnableManualVCOI:
 .LFB2:
 	.loc 1 33 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI2:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#3,w0
-	mov.b	w1,[w0]
+	lnk	#4
+.LCFI3:
+	mov.d	w8,[w15++]
+.LCFI4:
+	mov.b	w0,w9
+	mov.b	w1,w8
 	.loc 1 35 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#384,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 36 0
-	mov.b	[w14],w0
-	mov.b	w0,w1
-	bclr.b	w1,#7
-	add	w14,#3,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	sl	w0,#7,w0
-	mov.b	w0,w0
-	ior.b	w1,w0,w0
-	mov.b	w0,[w14]
+	sl	w8,#7,w8
+	mov.b	[w15-8],w0
+	bclr.b	w0,#7
+	ior.b	w8,w0,w0
+	mov.b	w0,[w15-8]
 	.loc 1 37 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#384,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteLongAddress
 	.loc 1 38 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -134,23 +121,19 @@ _AX5043PLLParamIsManualVCOIEnabled:
 .LFB3:
 	.loc 1 45 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI3:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI5:
 	.loc 1 47 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#384,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 48 0
-	mov.b	[w14],w0
-	ze	w0,w0
+	mov.b	[w15-4],w1
+	ze	w1,w0
 	lsr	w0,#7,w0
-	mov.b	w0,w0
 	.loc 1 49 0
 	ulnk	
 	return	
@@ -164,20 +147,17 @@ _AX5043PLLParamGetActualVCOBias:
 .LFB4:
 	.loc 1 56 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI4:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI6:
 	.loc 1 58 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#385,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 59 0
-	mov.b	[w14],w0
+	mov.b	[w15-4],w0
 	and.b	#63,w0
 	.loc 1 60 0
 	ulnk	
@@ -192,38 +172,34 @@ _AX5043PLLParamSetLockDetectDelay:
 .LFB5:
 	.loc 1 68 0
 	.set ___PA___,1
-	lnk	#8
-.LCFI5:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#4,w0
-	mov	w1,[w0]
+	lnk	#4
+.LCFI7:
+	mov.d	w8,[w15++]
+.LCFI8:
+	mov.b	w0,w8
+	mov	w1,w9
 	.loc 1 70 0
-	add	w14,#6,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#386,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 71 0
-	mov.b	[w14],w1
 	mov.b	#-4,w0
-	and.b	w1,w0,w1
-	add	w14,#4,w0
-	mov	[w0],w0
-	mov.b	w0,w0
-	ior.b	w1,w0,w0
-	mov.b	w0,[w14]
+	mov.b	[w15-8],w1
+	and.b	w1,w0,w0
+	ior.b	w0,w9,w0
+	mov.b	w0,[w15-8]
 	.loc 1 72 0
-	add	w14,#6,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#386,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteLongAddress
 	.loc 1 73 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -236,21 +212,18 @@ _AX5043PLLParamGetLockDetectDelay:
 .LFB6:
 	.loc 1 80 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI6:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI9:
 	.loc 1 82 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#386,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 83 0
-	mov.b	[w14],w0
-	ze	w0,w0
+	mov.b	[w15-4],w1
+	ze	w1,w0
 	and	w0,#3,w0
 	.loc 1 84 0
 	ulnk	
@@ -265,40 +238,34 @@ _AX5043PLLParamEnableManualLockDelay:
 .LFB7:
 	.loc 1 92 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI7:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#3,w0
-	mov.b	w1,[w0]
+	lnk	#4
+.LCFI10:
+	mov.d	w8,[w15++]
+.LCFI11:
+	mov.b	w0,w9
+	mov.b	w1,w8
 	.loc 1 94 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#386,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 95 0
-	mov.b	[w14],w0
-	mov.b	w0,w1
-	bclr.b	w1,#2
-	add	w14,#3,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	sl	w0,#2,w0
-	mov.b	w0,w0
-	ior.b	w1,w0,w0
-	mov.b	w0,[w14]
+	sl	w8,#2,w8
+	mov.b	[w15-8],w0
+	bclr.b	w0,#2
+	ior.b	w8,w0,w0
+	mov.b	w0,[w15-8]
 	.loc 1 96 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#386,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteLongAddress
 	.loc 1 97 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -311,24 +278,19 @@ _AX5043PLLParamIsManualLockDelayEnabled:
 .LFB8:
 	.loc 1 104 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI8:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI12:
 	.loc 1 106 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#386,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 107 0
-	mov.b	[w14],w0
-	ze	w0,w0
-	and	w0,#4,w0
-	asr	w0,#2,w0
-	mov.b	w0,w0
+	mov.b	[w15-4],w1
+	ze	w1,w0
+	bfext	#2,#1,w0,w0
 	.loc 1 108 0
 	ulnk	
 	return	
@@ -342,24 +304,19 @@ _AX5043PLLParamGetActualLockDetectDelay:
 .LFB9:
 	.loc 1 115 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI9:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI13:
 	.loc 1 117 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#386,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 118 0
-	mov.b	[w14],w0
-	ze	w0,w0
+	mov.b	[w15-4],w1
+	ze	w1,w0
 	lsr	w0,#6,w0
-	mov.b	w0,w0
-	ze	w0,w0
 	.loc 1 119 0
 	ulnk	
 	return	
@@ -373,38 +330,34 @@ _AX5043PLLParamSetPLLRangingClock:
 .LFB10:
 	.loc 1 127 0
 	.set ___PA___,1
-	lnk	#8
-.LCFI10:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#4,w0
-	mov	w1,[w0]
+	lnk	#4
+.LCFI14:
+	mov.d	w8,[w15++]
+.LCFI15:
+	mov.b	w0,w8
+	mov	w1,w9
 	.loc 1 129 0
-	add	w14,#6,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#387,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 130 0
-	mov.b	[w14],w1
 	mov.b	#-8,w0
-	and.b	w1,w0,w1
-	add	w14,#4,w0
-	mov	[w0],w0
-	mov.b	w0,w0
-	ior.b	w1,w0,w0
-	mov.b	w0,[w14]
+	mov.b	[w15-8],w1
+	and.b	w1,w0,w0
+	ior.b	w0,w9,w0
+	mov.b	w0,[w15-8]
 	.loc 1 131 0
-	add	w14,#6,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#387,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteLongAddress
 	.loc 1 132 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -417,21 +370,18 @@ _AX5043PLLParamGetPLLRangingClock:
 .LFB11:
 	.loc 1 139 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI11:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI16:
 	.loc 1 141 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#387,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 142 0
-	mov.b	[w14],w0
-	ze	w0,w0
+	mov.b	[w15-4],w1
+	ze	w1,w0
 	and	w0,#7,w0
 	.loc 1 143 0
 	ulnk	
@@ -470,6 +420,10 @@ _AX5043PLLParamGetPLLRangingClock:
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI1-.LCFI0
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE0:
 .LSFDE2:
@@ -479,7 +433,7 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB1
 	.4byte	.LFE1-.LFB1
 	.byte	0x4
-	.4byte	.LCFI1-.LFB1
+	.4byte	.LCFI2-.LFB1
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -494,12 +448,16 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB2
 	.4byte	.LFE2-.LFB2
 	.byte	0x4
-	.4byte	.LCFI2-.LFB2
+	.4byte	.LCFI3-.LFB2
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI4-.LCFI3
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE4:
 .LSFDE6:
@@ -509,7 +467,7 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB3
 	.4byte	.LFE3-.LFB3
 	.byte	0x4
-	.4byte	.LCFI3-.LFB3
+	.4byte	.LCFI5-.LFB3
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -524,7 +482,7 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB4
 	.4byte	.LFE4-.LFB4
 	.byte	0x4
-	.4byte	.LCFI4-.LFB4
+	.4byte	.LCFI6-.LFB4
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -539,12 +497,16 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB5
 	.4byte	.LFE5-.LFB5
 	.byte	0x4
-	.4byte	.LCFI5-.LFB5
+	.4byte	.LCFI7-.LFB5
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI8-.LCFI7
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE10:
 .LSFDE12:
@@ -554,7 +516,7 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB6
 	.4byte	.LFE6-.LFB6
 	.byte	0x4
-	.4byte	.LCFI6-.LFB6
+	.4byte	.LCFI9-.LFB6
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -569,12 +531,16 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB7
 	.4byte	.LFE7-.LFB7
 	.byte	0x4
-	.4byte	.LCFI7-.LFB7
+	.4byte	.LCFI10-.LFB7
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI11-.LCFI10
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE14:
 .LSFDE16:
@@ -584,7 +550,7 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB8
 	.4byte	.LFE8-.LFB8
 	.byte	0x4
-	.4byte	.LCFI8-.LFB8
+	.4byte	.LCFI12-.LFB8
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -599,7 +565,7 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB9
 	.4byte	.LFE9-.LFB9
 	.byte	0x4
-	.4byte	.LCFI9-.LFB9
+	.4byte	.LCFI13-.LFB9
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -614,12 +580,16 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB10
 	.4byte	.LFE10-.LFB10
 	.byte	0x4
-	.4byte	.LCFI10-.LFB10
+	.4byte	.LCFI14-.LFB10
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI15-.LCFI14
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE20:
 .LSFDE22:
@@ -629,7 +599,7 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB11
 	.4byte	.LFE11-.LFB11
 	.byte	0x4
-	.4byte	.LCFI11-.LFB11
+	.4byte	.LCFI16-.LFB11
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -642,7 +612,7 @@ _AX5043PLLParamGetPLLRangingClock:
 	.file 2 "/opt/microchip/xc16/v2.00/bin/bin/../../include/bits/alltypes.h"
 	.file 3 "AX5043_NBM/inc/AX5043/ax5043_pllparam.h"
 	.section	.debug_info,info
-	.4byte	0x6b4
+	.4byte	0x6a3
 	.2byte	0x2
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
@@ -758,32 +728,30 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB0
 	.4byte	.LFE0
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x2de
+	.byte	0x5f
+	.4byte	0x2dc
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x9
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0x8
 	.asciz	"biasCurrent"
 	.byte	0x1
 	.byte	0x9
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 3
+	.byte	0x1
+	.byte	0x59
 	.uleb128 0x9
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0xa
 	.4byte	0xde
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0xa
 	.byte	0x1
@@ -795,24 +763,23 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB1
 	.4byte	.LFE1
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x32b
+	.byte	0x5f
+	.4byte	0x328
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x15
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x9
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x16
 	.4byte	0xde
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x6
 	.byte	0x1
@@ -823,32 +790,30 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB2
 	.4byte	.LFE2
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x38b
+	.byte	0x5f
+	.4byte	0x386
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x21
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x59
 	.uleb128 0x8
 	.asciz	"enable"
 	.byte	0x1
 	.byte	0x21
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 3
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0x9
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x22
 	.4byte	0xde
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0xa
 	.byte	0x1
@@ -860,24 +825,23 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB3
 	.4byte	.LFE3
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x3e1
+	.byte	0x5f
+	.4byte	0x3db
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x2d
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x9
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x2e
 	.4byte	0xde
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0xa
 	.byte	0x1
@@ -889,24 +853,23 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB4
 	.4byte	.LFE4
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x434
+	.byte	0x5f
+	.4byte	0x42d
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x38
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x9
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x39
 	.4byte	0xde
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x6
 	.byte	0x1
@@ -917,32 +880,30 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB5
 	.4byte	.LFE5
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x495
+	.byte	0x5f
+	.4byte	0x48c
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x44
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0x8
 	.asciz	"delay"
 	.byte	0x1
 	.byte	0x44
 	.4byte	0x1a0
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
+	.byte	0x1
+	.byte	0x59
 	.uleb128 0x9
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x45
 	.4byte	0xde
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0xa
 	.byte	0x1
@@ -954,24 +915,23 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB6
 	.4byte	.LFE6
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x4ea
+	.byte	0x5f
+	.4byte	0x4e0
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x50
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x9
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x51
 	.4byte	0xde
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x6
 	.byte	0x1
@@ -982,32 +942,30 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB7
 	.4byte	.LFE7
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x54f
+	.byte	0x5f
+	.4byte	0x543
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x5c
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x59
 	.uleb128 0x8
 	.asciz	"enable"
 	.byte	0x1
 	.byte	0x5c
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 3
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0x9
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x5d
 	.4byte	0xde
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0xa
 	.byte	0x1
@@ -1019,24 +977,23 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB8
 	.4byte	.LFE8
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x5aa
+	.byte	0x5f
+	.4byte	0x59d
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x68
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x9
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x69
 	.4byte	0xde
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0xa
 	.byte	0x1
@@ -1048,24 +1005,23 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB9
 	.4byte	.LFE9
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x605
+	.byte	0x5f
+	.4byte	0x5f7
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x73
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x9
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x74
 	.4byte	0xde
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x6
 	.byte	0x1
@@ -1076,32 +1032,30 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB10
 	.4byte	.LFE10
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x666
+	.byte	0x5f
+	.4byte	0x656
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x7f
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0x8
 	.asciz	"clock"
 	.byte	0x1
 	.byte	0x7f
 	.4byte	0x268
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
+	.byte	0x1
+	.byte	0x59
 	.uleb128 0x9
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x80
 	.4byte	0xde
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0xb
 	.byte	0x1
@@ -1113,23 +1067,22 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	.LFB11
 	.4byte	.LFE11
 	.byte	0x1
-	.byte	0x5e
+	.byte	0x5f
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x8b
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x9
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x8c
 	.4byte	0xde
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.byte	0x0
 	.section	.debug_abbrev,info
@@ -1319,37 +1272,37 @@ _AX5043PLLParamGetPLLRangingClock:
 	.4byte	0x1c6
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0x6b8
+	.4byte	0x6a7
 	.4byte	0x27f
 	.asciz	"AX5043PLLParamSetVCOBias"
-	.4byte	0x2de
+	.4byte	0x2dc
 	.asciz	"AX5043PLLParamGetVCOBias"
-	.4byte	0x32b
+	.4byte	0x328
 	.asciz	"AX5043PLLParamEnableManualVCOI"
-	.4byte	0x38b
+	.4byte	0x386
 	.asciz	"AX5043PLLParamIsManualVCOIEnabled"
-	.4byte	0x3e1
+	.4byte	0x3db
 	.asciz	"AX5043PLLParamGetActualVCOBias"
-	.4byte	0x434
+	.4byte	0x42d
 	.asciz	"AX5043PLLParamSetLockDetectDelay"
-	.4byte	0x495
+	.4byte	0x48c
 	.asciz	"AX5043PLLParamGetLockDetectDelay"
-	.4byte	0x4ea
+	.4byte	0x4e0
 	.asciz	"AX5043PLLParamEnableManualLockDelay"
-	.4byte	0x54f
+	.4byte	0x543
 	.asciz	"AX5043PLLParamIsManualLockDelayEnabled"
-	.4byte	0x5aa
+	.4byte	0x59d
 	.asciz	"AX5043PLLParamGetActualLockDetectDelay"
-	.4byte	0x605
+	.4byte	0x5f7
 	.asciz	"AX5043PLLParamSetPLLRangingClock"
-	.4byte	0x666
+	.4byte	0x656
 	.asciz	"AX5043PLLParamGetPLLRangingClock"
 	.4byte	0x0
 	.section	.debug_pubtypes,info
 	.4byte	0x44
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0x6b8
+	.4byte	0x6a7
 	.4byte	0xde
 	.asciz	"uint8_t"
 	.4byte	0x1a0

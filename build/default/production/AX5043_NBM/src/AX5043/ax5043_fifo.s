@@ -16,23 +16,20 @@ _AX5043FIFOGetFIFOStat:
 	.file 1 "AX5043_NBM/src/AX5043/ax5043_fifo.c"
 	.loc 1 8 0
 	.set ___PA___,1
-	lnk	#6
+	lnk	#4
 .LCFI0:
 	mov	w8,[w15++]
 .LCFI1:
 	mov	w0,w8
-	inc2	w14,w0
-	mov.b	w1,[w0]
 	.loc 1 10 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#6,w3
 	mov.b	#40,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	sub	w15,#4,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 11 0
-	mov.b	[w14],[w8]
+	mov.b	[w15-6],w0
+	mov.b	w0,[w8]
 	.loc 1 12 0
 	mov	w8,w0
 	mov	[--w15],w8
@@ -48,24 +45,16 @@ _AX5043FIFOSetFIFOStatCommand:
 .LFB1:
 	.loc 1 20 0
 	.set ___PA___,1
-	lnk	#8
+	lnk	#4
 .LCFI2:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#4,w0
-	mov	w1,[w0]
 	.loc 1 21 0
-	add	w14,#4,w0
-	mov	[w0],w0
-	mov.b	w0,w0
-	mov.b	w0,[w14]
+	mov.b	w1,[w15-4]
 	.loc 1 22 0
-	add	w14,#6,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov.b	#40,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043WriteShortAddress
 	.loc 1 23 0
 	ulnk	
@@ -80,23 +69,14 @@ _AX5043FIFOSetFIFO:
 .LFB2:
 	.loc 1 32 0
 	.set ___PA___,1
-	lnk	#8
+	lnk	#2
 .LCFI3:
-	mov.b	w0,[w14]
-	inc2	w14,w0
-	mov	w1,[w0]
-	add	w14,#4,w0
-	mov.b	w2,[w0]
 	.loc 1 33 0
-	add	w14,#4,w0
-	mov.b	[w0],w0
-	ze	w0,w1
-	add	w14,#6,w0
-	mov	w1,w4
-	inc2	w14,w1
-	mov	[w1],w3
+	ze	w2,w4
+	mov	w1,w3
 	mov.b	#41,w2
-	mov.b	[w14],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043WriteShortAddress
 	.loc 1 34 0
 	ulnk	
@@ -111,23 +91,14 @@ _AX5043FIFOGetFIFO:
 .LFB3:
 	.loc 1 43 0
 	.set ___PA___,1
-	lnk	#8
+	lnk	#2
 .LCFI4:
-	mov.b	w0,[w14]
-	inc2	w14,w0
-	mov	w1,[w0]
-	add	w14,#4,w0
-	mov.b	w2,[w0]
 	.loc 1 44 0
-	add	w14,#4,w0
-	mov.b	[w0],w0
-	ze	w0,w1
-	add	w14,#6,w0
-	mov	w1,w4
-	inc2	w14,w1
-	mov	[w1],w3
+	ze	w2,w4
+	mov	w1,w3
 	mov.b	#41,w2
-	mov.b	[w14],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 45 0
 	ulnk	
@@ -142,46 +113,36 @@ _AX5043FIFOGetFIFOCount:
 .LFB4:
 	.loc 1 52 0
 	.set ___PA___,1
-	lnk	#8
+	lnk	#4
 .LCFI5:
-	add	w14,#4,w1
-	mov.b	w0,[w1]
-	.loc 1 53 0
-	clr	w0
-	mov	w0,[w14]
+	mov.d	w8,[w15++]
+.LCFI6:
+	mov.b	w0,w8
 	.loc 1 55 0
-	add	w14,#6,w0
-	inc2	w14,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#8,w3
 	mov.b	#42,w2
-	add	w14,#4,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 56 0
-	inc2	w14,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	and	w0,#1,w0
-	sl	w0,#8,w0
-	mov	w0,[w14]
+	mov.b	[w15-8],w0
+	ze	w0,w9
+	and	w9,#1,w9
+	sl	w9,#8,w9
 	.loc 1 57 0
-	add	w14,#6,w0
-	inc2	w14,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#8,w3
 	mov.b	#43,w2
-	add	w14,#4,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 58 0
-	inc2	w14,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	add	w0,[w14],[w14]
-	.loc 1 59 0
-	mov	[w14],w0
+	mov.b	[w15-8],w1
+	ze	w1,w0
+	add	w9,w0,w0
 	.loc 1 60 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -194,46 +155,36 @@ _AX5043FIFOGetFIFOFree:
 .LFB5:
 	.loc 1 67 0
 	.set ___PA___,1
-	lnk	#8
-.LCFI6:
-	add	w14,#4,w1
-	mov.b	w0,[w1]
-	.loc 1 68 0
-	clr	w0
-	mov	w0,[w14]
+	lnk	#4
+.LCFI7:
+	mov.d	w8,[w15++]
+.LCFI8:
+	mov.b	w0,w8
 	.loc 1 70 0
-	add	w14,#6,w0
-	inc2	w14,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#8,w3
 	mov.b	#44,w2
-	add	w14,#4,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 71 0
-	inc2	w14,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	and	w0,#1,w0
-	sl	w0,#8,w0
-	mov	w0,[w14]
+	mov.b	[w15-8],w0
+	ze	w0,w9
+	and	w9,#1,w9
+	sl	w9,#8,w9
 	.loc 1 72 0
-	add	w14,#6,w0
-	inc2	w14,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#8,w3
 	mov.b	#45,w2
-	add	w14,#4,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 73 0
-	inc2	w14,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	add	w0,[w14],[w14]
-	.loc 1 74 0
-	mov	[w14],w0
+	mov.b	[w15-8],w1
+	ze	w1,w0
+	add	w9,w0,w0
 	.loc 1 75 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -246,46 +197,36 @@ _AX5043FIFOGetFIFOThreshold:
 .LFB6:
 	.loc 1 82 0
 	.set ___PA___,1
-	lnk	#8
-.LCFI7:
-	add	w14,#4,w1
-	mov.b	w0,[w1]
-	.loc 1 83 0
-	clr	w0
-	mov	w0,[w14]
+	lnk	#4
+.LCFI9:
+	mov.d	w8,[w15++]
+.LCFI10:
+	mov.b	w0,w8
 	.loc 1 85 0
-	add	w14,#6,w0
-	inc2	w14,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#8,w3
 	mov.b	#46,w2
-	add	w14,#4,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 86 0
-	inc2	w14,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	and	w0,#1,w0
-	sl	w0,#8,w0
-	mov	w0,[w14]
+	mov.b	[w15-8],w0
+	ze	w0,w9
+	and	w9,#1,w9
+	sl	w9,#8,w9
 	.loc 1 87 0
-	add	w14,#6,w0
-	inc2	w14,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#8,w3
 	mov.b	#47,w2
-	add	w14,#4,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 88 0
-	inc2	w14,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	add	w0,[w14],[w14]
-	.loc 1 89 0
-	mov	[w14],w0
+	mov.b	[w15-8],w1
+	ze	w1,w0
+	add	w9,w0,w0
 	.loc 1 90 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -325,7 +266,7 @@ _AX5043FIFOGetFIFOThreshold:
 	.byte	0x4
 	.4byte	.LCFI1-.LCFI0
 	.byte	0x88
-	.uleb128 0x6
+	.uleb128 0x5
 	.align	4
 .LEFDE0:
 .LSFDE2:
@@ -386,6 +327,10 @@ _AX5043FIFOGetFIFOThreshold:
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI6-.LCFI5
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE8:
 .LSFDE10:
@@ -395,12 +340,16 @@ _AX5043FIFOGetFIFOThreshold:
 	.4byte	.LFB5
 	.4byte	.LFE5-.LFB5
 	.byte	0x4
-	.4byte	.LCFI6-.LFB5
+	.4byte	.LCFI7-.LFB5
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI8-.LCFI7
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE10:
 .LSFDE12:
@@ -410,12 +359,16 @@ _AX5043FIFOGetFIFOThreshold:
 	.4byte	.LFB6
 	.4byte	.LFE6-.LFB6
 	.byte	0x4
-	.4byte	.LCFI7-.LFB6
+	.4byte	.LCFI9-.LFB6
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI10-.LCFI9
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE12:
 	.section	.text,code
@@ -423,7 +376,7 @@ _AX5043FIFOGetFIFOThreshold:
 	.file 2 "/opt/microchip/xc16/v2.00/bin/bin/../../include/bits/alltypes.h"
 	.file 3 "AX5043_NBM/inc/AX5043/ax5043_fifo.h"
 	.section	.debug_info,info
-	.4byte	0x565
+	.4byte	0x550
 	.2byte	0x2
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
@@ -628,24 +581,23 @@ _AX5043FIFOGetFIFOThreshold:
 	.4byte	.LFB0
 	.4byte	.LFE0
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x334
+	.byte	0x5f
+	.4byte	0x333
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x8
 	.4byte	0xda
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x51
 	.uleb128 0xd
 	.asciz	"fifoStat"
 	.byte	0x1
 	.byte	0x9
 	.4byte	0x232
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -6
 	.byte	0x0
 	.uleb128 0xe
 	.byte	0x1
@@ -656,32 +608,30 @@ _AX5043FIFOGetFIFOThreshold:
 	.4byte	.LFB1
 	.4byte	.LFE1
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x39b
+	.byte	0x5f
+	.4byte	0x398
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x14
 	.4byte	0xda
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0xf
 	.asciz	"fifoStatCommand"
 	.byte	0x1
 	.byte	0x14
 	.4byte	0x2d2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
+	.byte	0x1
+	.byte	0x51
 	.uleb128 0x10
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x15
 	.4byte	0xda
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0xe
 	.byte	0x1
@@ -692,32 +642,29 @@ _AX5043FIFOGetFIFOThreshold:
 	.4byte	.LFB2
 	.4byte	.LFE2
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x3ef
+	.byte	0x5f
+	.4byte	0x3e9
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x20
 	.4byte	0xda
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0xf
 	.asciz	"data"
 	.byte	0x1
 	.byte	0x20
-	.4byte	0x3ef
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.4byte	0x3e9
+	.byte	0x1
+	.byte	0x51
 	.uleb128 0xf
 	.asciz	"length"
 	.byte	0x1
 	.byte	0x20
 	.4byte	0xda
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
+	.byte	0x1
+	.byte	0x52
 	.byte	0x0
 	.uleb128 0x11
 	.byte	0x2
@@ -731,32 +678,29 @@ _AX5043FIFOGetFIFOThreshold:
 	.4byte	.LFB3
 	.4byte	.LFE3
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x449
+	.byte	0x5f
+	.4byte	0x440
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x2b
 	.4byte	0xda
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0xf
 	.asciz	"data"
 	.byte	0x1
 	.byte	0x2b
-	.4byte	0x3ef
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.4byte	0x3e9
+	.byte	0x1
+	.byte	0x51
 	.uleb128 0xf
 	.asciz	"length"
 	.byte	0x1
 	.byte	0x2b
 	.4byte	0xda
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
+	.byte	0x1
+	.byte	0x52
 	.byte	0x0
 	.uleb128 0xb
 	.byte	0x1
@@ -768,32 +712,28 @@ _AX5043FIFOGetFIFOThreshold:
 	.4byte	.LFB4
 	.4byte	.LFE4
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x4a8
+	.byte	0x5f
+	.4byte	0x49b
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x34
 	.4byte	0xda
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
-	.uleb128 0xd
+	.byte	0x1
+	.byte	0x58
+	.uleb128 0x12
 	.asciz	"fifoCount"
 	.byte	0x1
 	.byte	0x35
 	.4byte	0xfa
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
 	.uleb128 0x10
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x36
 	.4byte	0xda
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0xb
 	.byte	0x1
@@ -805,34 +745,30 @@ _AX5043FIFOGetFIFOThreshold:
 	.4byte	.LFB5
 	.4byte	.LFE5
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x505
+	.byte	0x5f
+	.4byte	0x4f4
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x43
 	.4byte	0xda
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
-	.uleb128 0xd
+	.byte	0x1
+	.byte	0x58
+	.uleb128 0x12
 	.asciz	"fifoFree"
 	.byte	0x1
 	.byte	0x44
 	.4byte	0xfa
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
 	.uleb128 0x10
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x45
 	.4byte	0xda
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
-	.uleb128 0x12
+	.uleb128 0x13
 	.byte	0x1
 	.asciz	"AX5043FIFOGetFIFOThreshold"
 	.byte	0x1
@@ -842,31 +778,27 @@ _AX5043FIFOGetFIFOThreshold:
 	.4byte	.LFB6
 	.4byte	.LFE6
 	.byte	0x1
-	.byte	0x5e
+	.byte	0x5f
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x52
 	.4byte	0xda
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
-	.uleb128 0xd
+	.byte	0x1
+	.byte	0x58
+	.uleb128 0x12
 	.asciz	"fifoThreshold"
 	.byte	0x1
 	.byte	0x53
 	.4byte	0xfa
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
 	.uleb128 0x10
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x54
 	.4byte	0xda
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.byte	0x0
 	.section	.debug_abbrev,info
@@ -1120,6 +1052,19 @@ _AX5043FIFOGetFIFOThreshold:
 	.byte	0x0
 	.byte	0x0
 	.uleb128 0x12
+	.uleb128 0x34
+	.byte	0x0
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0x0
+	.byte	0x0
+	.uleb128 0x13
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -1147,27 +1092,27 @@ _AX5043FIFOGetFIFOThreshold:
 	.4byte	0xc9
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0x569
+	.4byte	0x554
 	.4byte	0x2e5
 	.asciz	"AX5043FIFOGetFIFOStat"
-	.4byte	0x334
+	.4byte	0x333
 	.asciz	"AX5043FIFOSetFIFOStatCommand"
-	.4byte	0x39b
+	.4byte	0x398
 	.asciz	"AX5043FIFOSetFIFO"
-	.4byte	0x3f5
+	.4byte	0x3ef
 	.asciz	"AX5043FIFOGetFIFO"
-	.4byte	0x449
+	.4byte	0x440
 	.asciz	"AX5043FIFOGetFIFOCount"
-	.4byte	0x4a8
+	.4byte	0x49b
 	.asciz	"AX5043FIFOGetFIFOFree"
-	.4byte	0x505
+	.4byte	0x4f4
 	.asciz	"AX5043FIFOGetFIFOThreshold"
 	.4byte	0x0
 	.section	.debug_pubtypes,info
 	.4byte	0x44
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0x569
+	.4byte	0x554
 	.4byte	0xda
 	.asciz	"uint8_t"
 	.4byte	0xfa

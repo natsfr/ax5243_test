@@ -10745,7 +10745,6 @@ void conf_clock();
 void conf_pins();
 void conf_spi_radio();
 
-
 static inline void led_set(uint16_t led_set) {
     uint16_t old_val = LATB & ~0x1C00;
     LATB = old_val | led_set;

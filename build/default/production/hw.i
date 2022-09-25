@@ -10745,7 +10745,6 @@ void conf_clock();
 void conf_pins();
 void conf_spi_radio();
 
-
 static inline void led_set(uint16_t led_set) {
     uint16_t old_val = LATB & ~0x1C00;
     LATB = old_val | led_set;
@@ -10784,7 +10783,7 @@ void conf_pins() {
 # 122 "hw.c"
     CNPDB = 0x0000;
     CNPUB = 0x2310;
-    LATB = 0x0010;
+    LATB = 0x2010;
     ANSELB = 0x0000;
     TRISB = 0xC0EF;
 # 144 "hw.c"

@@ -16,28 +16,20 @@ _AX5043ExperimentalSetGPADCMux:
 	.file 1 "AX5043_NBM/src/AX5043/ax5043_experimental.c"
 	.loc 1 9 0
 	.set ___PA___,1
-	lnk	#8
+	lnk	#4
 .LCFI0:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#4,w0
-	mov	w1,[w0]
 	.loc 1 10 0
-	mov.b	[w14],w1
-	mov.b	#-8,w0
-	and.b	w1,w0,w1
-	add	w14,#4,w0
-	mov	[w0],w0
-	mov.b	w0,w0
-	ior.b	w1,w0,w0
-	mov.b	w0,[w14]
+	mov.b	#-8,w2
+	mov.b	[w15-4],w3
+	and.b	w3,w2,w2
+	ior.b	w2,w1,w2
+	mov.b	w2,[w15-4]
 	.loc 1 11 0
-	add	w14,#6,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#3842,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043WriteLongAddress
 	.loc 1 12 0
 	ulnk	
@@ -52,21 +44,18 @@ _AX5043ExperimentalGetGPADCMux:
 .LFB1:
 	.loc 1 19 0
 	.set ___PA___,1
-	lnk	#6
+	lnk	#4
 .LCFI1:
-	inc2	w14,w1
-	mov.b	w0,[w1]
 	.loc 1 21 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#3842,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 22 0
-	mov.b	[w14],w0
-	ze	w0,w0
+	mov.b	[w15-4],w1
+	ze	w1,w0
 	and	w0,#7,w0
 	.loc 1 23 0
 	ulnk	
@@ -81,41 +70,35 @@ _AX5043ExperimentalEnableBasebandFilterOutput:
 .LFB2:
 	.loc 1 31 0
 	.set ___PA___,1
-	lnk	#6
+	lnk	#4
 .LCFI2:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#3,w0
-	mov.b	w1,[w0]
+	mov.d	w8,[w15++]
+.LCFI3:
+	mov.b	w0,w9
+	mov.b	w1,w8
 	.loc 1 33 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#3910,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 34 0
-	mov.b	[w14],w0
-	mov.b	w0,w1
+	sl	w8,#3,w8
 	mov.b	#-16,w0
-	and.b	w1,w0,w1
-	add	w14,#3,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	sl	w0,#3,w0
-	mov.b	w0,w0
-	ior.b	w1,w0,w0
-	mov.b	w0,[w14]
+	mov.b	[w15-8],w1
+	and.b	w1,w0,w0
+	ior.b	w8,w0,w0
+	mov.b	w0,[w15-8]
 	.loc 1 35 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#3910,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteLongAddress
 	.loc 1 36 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -128,24 +111,19 @@ _AX5043ExperimentalIsEnabledBasebandFilterOutput:
 .LFB3:
 	.loc 1 43 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI3:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI4:
 	.loc 1 45 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#3910,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 46 0
-	mov.b	[w14],w0
-	ze	w0,w0
-	and	w0,#15,w0
-	asr	w0,#3,w0
-	mov.b	w0,w0
+	mov.b	[w15-4],w1
+	ze	w1,w0
+	bfext	#3,#1,w0,w0
 	.loc 1 47 0
 	ulnk	
 	return	
@@ -159,40 +137,34 @@ _AX5043ExperimentalEnableBasebandDetector:
 .LFB4:
 	.loc 1 55 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI4:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#3,w0
-	mov.b	w1,[w0]
+	lnk	#4
+.LCFI5:
+	mov.d	w8,[w15++]
+.LCFI6:
+	mov.b	w0,w9
+	mov.b	w1,w8
 	.loc 1 57 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#3910,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 58 0
-	mov.b	[w14],w0
-	mov.b	w0,w1
-	bclr.b	w1,#4
-	add	w14,#3,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	sl	w0,#4,w0
-	mov.b	w0,w0
-	ior.b	w1,w0,w0
-	mov.b	w0,[w14]
+	sl	w8,#4,w8
+	mov.b	[w15-8],w0
+	bclr.b	w0,#4
+	ior.b	w8,w0,w0
+	mov.b	w0,[w15-8]
 	.loc 1 59 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#3910,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteLongAddress
 	.loc 1 60 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -205,24 +177,19 @@ _AX5043ExperimentalIsEnabledBasebandDetector:
 .LFB5:
 	.loc 1 67 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI5:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI7:
 	.loc 1 69 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#3910,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 70 0
-	mov.b	[w14],w0
-	ze	w0,w0
-	and	w0,#16,w0
-	asr	w0,#4,w0
-	mov.b	w0,w0
+	mov.b	[w15-4],w1
+	ze	w1,w0
+	bfext	#4,#1,w0,w0
 	.loc 1 71 0
 	ulnk	
 	return	
@@ -236,40 +203,34 @@ _AX5043ExperimentalEnableBasebandDetectorOutputDriver:
 .LFB6:
 	.loc 1 79 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI6:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#3,w0
-	mov.b	w1,[w0]
+	lnk	#4
+.LCFI8:
+	mov.d	w8,[w15++]
+.LCFI9:
+	mov.b	w0,w9
+	mov.b	w1,w8
 	.loc 1 81 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#3910,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 82 0
-	mov.b	[w14],w0
-	mov.b	w0,w1
-	bclr.b	w1,#5
-	add	w14,#3,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	sl	w0,#5,w0
-	mov.b	w0,w0
-	ior.b	w1,w0,w0
-	mov.b	w0,[w14]
+	sl	w8,#5,w8
+	mov.b	[w15-8],w0
+	bclr.b	w0,#5
+	ior.b	w8,w0,w0
+	mov.b	w0,[w15-8]
 	.loc 1 83 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#3910,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteLongAddress
 	.loc 1 84 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -282,25 +243,19 @@ _AX5043ExperimentalIsEnabledBasebandDetectorOutputDriver:
 .LFB7:
 	.loc 1 91 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI7:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI10:
 	.loc 1 93 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#3910,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 94 0
-	mov.b	[w14],w0
-	ze	w0,w1
-	mov	#32,w0
-	and	w1,w0,w0
-	asr	w0,#5,w0
-	mov.b	w0,w0
+	mov.b	[w15-4],w1
+	ze	w1,w0
+	bfext	#5,#1,w0,w0
 	.loc 1 95 0
 	ulnk	
 	return	
@@ -314,25 +269,19 @@ _AX5043ExperimentalGetBasebandIComparatorState:
 .LFB8:
 	.loc 1 102 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI8:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI11:
 	.loc 1 104 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#3910,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 105 0
-	mov.b	[w14],w0
-	ze	w0,w1
-	mov	#64,w0
-	and	w1,w0,w0
-	asr	w0,#6,w0
-	mov.b	w0,w0
+	mov.b	[w15-4],w1
+	ze	w1,w0
+	bfext	#6,#1,w0,w0
 	.loc 1 106 0
 	ulnk	
 	return	
@@ -346,23 +295,19 @@ _AX5043ExperimentalGetBasebandQComparatorState:
 .LFB9:
 	.loc 1 113 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI9:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI12:
 	.loc 1 115 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#3910,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 116 0
-	mov.b	[w14],w0
-	ze	w0,w0
+	mov.b	[w15-4],w1
+	ze	w1,w0
 	lsr	w0,#7,w0
-	mov.b	w0,w0
 	.loc 1 117 0
 	ulnk	
 	return	
@@ -376,28 +321,17 @@ _AX5043ExperimentalGetDSPModeShiftRegisterValue:
 .LFB10:
 	.loc 1 124 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI10:
-	inc2	w14,w1
-	mov.b	w0,[w1]
-	.loc 1 125 0
-	clr.b	w0
-	mov.b	w0,[w14]
+	lnk	#4
+.LCFI13:
 	.loc 1 127 0
-	add	w14,#4,w0
-	inc	w14,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#4,w3
 	mov.b	#111,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadShortAddress
-	.loc 1 128 0
-	inc	w14,w0
-	mov.b	[w0],[w14]
-	.loc 1 129 0
-	mov.b	[w14],w0
 	.loc 1 130 0
+	mov.b	[w15-4],w0
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -410,38 +344,34 @@ _AX5043ExperimentalSetSyncSource:
 .LFB11:
 	.loc 1 138 0
 	.set ___PA___,1
-	lnk	#8
-.LCFI11:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#4,w0
-	mov	w1,[w0]
+	lnk	#4
+.LCFI14:
+	mov.d	w8,[w15++]
+.LCFI15:
+	mov.b	w0,w8
+	mov	w1,w9
 	.loc 1 140 0
-	add	w14,#6,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#800,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 141 0
-	mov.b	[w14],w1
 	mov.b	#-4,w0
-	and.b	w1,w0,w1
-	add	w14,#4,w0
-	mov	[w0],w0
-	mov.b	w0,w0
-	ior.b	w1,w0,w0
-	mov.b	w0,[w14]
+	mov.b	[w15-8],w1
+	and.b	w1,w0,w0
+	ior.b	w0,w9,w0
+	mov.b	w0,[w15-8]
 	.loc 1 142 0
-	add	w14,#6,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#800,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteLongAddress
 	.loc 1 143 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -454,21 +384,18 @@ _AX5043ExperimentalGetSyncSource:
 .LFB12:
 	.loc 1 150 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI12:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI16:
 	.loc 1 152 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#800,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 153 0
-	mov.b	[w14],w0
-	ze	w0,w0
+	mov.b	[w15-4],w1
+	ze	w1,w0
 	and	w0,#3,w0
 	.loc 1 154 0
 	ulnk	
@@ -483,40 +410,34 @@ _AX5043ExperimentalEnableDSPModeSPI:
 .LFB13:
 	.loc 1 162 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI13:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#3,w0
-	mov.b	w1,[w0]
+	lnk	#4
+.LCFI17:
+	mov.d	w8,[w15++]
+.LCFI18:
+	mov.b	w0,w9
+	mov.b	w1,w8
 	.loc 1 164 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#800,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 165 0
-	mov.b	[w14],w0
-	mov.b	w0,w1
-	bclr.b	w1,#6
-	add	w14,#3,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	sl	w0,#6,w0
-	mov.b	w0,w0
-	ior.b	w1,w0,w0
-	mov.b	w0,[w14]
+	sl	w8,#6,w8
+	mov.b	[w15-8],w0
+	bclr.b	w0,#6
+	ior.b	w8,w0,w0
+	mov.b	w0,[w15-8]
 	.loc 1 166 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#800,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteLongAddress
 	.loc 1 167 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -529,25 +450,19 @@ _AX5043ExperimentalIsEnabledDSPModeSPI:
 .LFB14:
 	.loc 1 174 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI14:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI19:
 	.loc 1 176 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#800,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 177 0
-	mov.b	[w14],w0
-	ze	w0,w1
-	mov	#64,w0
-	and	w1,w0,w0
-	asr	w0,#6,w0
-	mov.b	w0,w0
+	mov.b	[w15-4],w1
+	ze	w1,w0
+	bfext	#6,#1,w0,w0
 	.loc 1 178 0
 	ulnk	
 	return	
@@ -561,40 +476,34 @@ _AX5043ExperimentalEnableFSYNCDelay:
 .LFB15:
 	.loc 1 186 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI15:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#3,w0
-	mov.b	w1,[w0]
+	lnk	#4
+.LCFI20:
+	mov.d	w8,[w15++]
+.LCFI21:
+	mov.b	w0,w9
+	mov.b	w1,w8
 	.loc 1 188 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#800,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 189 0
-	mov.b	[w14],w0
-	mov.b	w0,w1
-	bclr.b	w1,#7
-	add	w14,#3,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	sl	w0,#7,w0
-	mov.b	w0,w0
-	ior.b	w1,w0,w0
-	mov.b	w0,[w14]
+	sl	w8,#7,w8
+	mov.b	[w15-8],w0
+	bclr.b	w0,#7
+	ior.b	w8,w0,w0
+	mov.b	w0,[w15-8]
 	.loc 1 190 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#800,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteLongAddress
 	.loc 1 191 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -607,23 +516,19 @@ _AX5043ExperimentalIsEnabledFSYNCDelay:
 .LFB16:
 	.loc 1 198 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI16:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI22:
 	.loc 1 200 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#800,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 201 0
-	mov.b	[w14],w0
-	ze	w0,w0
+	mov.b	[w15-4],w1
+	ze	w1,w0
 	lsr	w0,#7,w0
-	mov.b	w0,w0
 	.loc 1 202 0
 	ulnk	
 	return	
@@ -637,40 +542,33 @@ _AX5043ExperimentalSetDSPModeSkipData:
 .LFB17:
 	.loc 1 210 0
 	.set ___PA___,1
-	lnk	#8
-.LCFI17:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#4,w0
-	mov	w1,[w0]
+	lnk	#4
+.LCFI23:
+	mov.d	w8,[w15++]
+.LCFI24:
+	mov.b	w0,w9
+	mov	w1,w8
 	.loc 1 211 0
-	add	w14,#4,w0
-	mov	[w0],w0
-	mov.b	w0,w0
-	mov.b	w0,[w14]
+	mov.b	w8,[w15-8]
 	.loc 1 212 0
-	add	w14,#6,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#802,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteLongAddress
 	.loc 1 213 0
-	add	w14,#4,w0
-	mov	[w0],w0
-	lsr	w0,#8,w0
-	mov.b	w0,w0
-	mov.b	w0,[w14]
+	lsr	w8,#8,w8
+	mov.b	w8,[w15-8]
 	.loc 1 214 0
-	add	w14,#6,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#801,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteLongAddress
 	.loc 1 215 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -683,49 +581,40 @@ _AX5043ExperimentalGetDSPModeSkipData:
 .LFB18:
 	.loc 1 222 0
 	.set ___PA___,1
-	lnk	#8
-.LCFI18:
-	mov	w8,[w15++]
-.LCFI19:
-	mov	w0,w8
-	add	w14,#4,w0
-	mov.b	w1,[w0]
+	lnk	#4
+.LCFI25:
+	mov.d	w8,[w15++]
+.LCFI26:
+	mov	w10,[w15++]
+.LCFI27:
+	mov	w0,w9
+	mov.b	w1,w8
 	.loc 1 225 0
-	add	w14,#6,w0
-	inc2	w14,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#10,w3
 	mov	#802,w2
-	add	w14,#4,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#8,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 226 0
-	inc2	w14,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	mov	w0,[w14]
+	mov.b	[w15-10],w0
+	ze	w0,w10
 	.loc 1 227 0
-	add	w14,#6,w0
-	inc2	w14,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#10,w3
 	mov	#801,w2
-	add	w14,#4,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#8,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 228 0
-	mov	[w14],w1
-	inc2	w14,w0
-	mov.b	[w0],w0
-	ze	w0,w0
+	mov.b	[w15-10],w1
+	ze	w1,w0
 	sl	w0,#8,w0
-	add	w1,w0,w0
-	mov	w0,[w14]
-	.loc 1 229 0
-	mov	[w14],[w8]
+	add	w0,w10,[w9]
 	.loc 1 230 0
-	mov	w8,w0
-	mov	[--w15],w8
+	mov	w9,w0
+	mov	[--w15],w10
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -792,6 +681,10 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI3-.LCFI2
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE4:
 .LSFDE6:
@@ -801,7 +694,7 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB3
 	.4byte	.LFE3-.LFB3
 	.byte	0x4
-	.4byte	.LCFI3-.LFB3
+	.4byte	.LCFI4-.LFB3
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -816,12 +709,16 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB4
 	.4byte	.LFE4-.LFB4
 	.byte	0x4
-	.4byte	.LCFI4-.LFB4
+	.4byte	.LCFI5-.LFB4
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI6-.LCFI5
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE8:
 .LSFDE10:
@@ -831,7 +728,7 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB5
 	.4byte	.LFE5-.LFB5
 	.byte	0x4
-	.4byte	.LCFI5-.LFB5
+	.4byte	.LCFI7-.LFB5
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -846,12 +743,16 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB6
 	.4byte	.LFE6-.LFB6
 	.byte	0x4
-	.4byte	.LCFI6-.LFB6
+	.4byte	.LCFI8-.LFB6
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI9-.LCFI8
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE12:
 .LSFDE14:
@@ -861,7 +762,7 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB7
 	.4byte	.LFE7-.LFB7
 	.byte	0x4
-	.4byte	.LCFI7-.LFB7
+	.4byte	.LCFI10-.LFB7
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -876,7 +777,7 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB8
 	.4byte	.LFE8-.LFB8
 	.byte	0x4
-	.4byte	.LCFI8-.LFB8
+	.4byte	.LCFI11-.LFB8
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -891,7 +792,7 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB9
 	.4byte	.LFE9-.LFB9
 	.byte	0x4
-	.4byte	.LCFI9-.LFB9
+	.4byte	.LCFI12-.LFB9
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -906,7 +807,7 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB10
 	.4byte	.LFE10-.LFB10
 	.byte	0x4
-	.4byte	.LCFI10-.LFB10
+	.4byte	.LCFI13-.LFB10
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -921,12 +822,16 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB11
 	.4byte	.LFE11-.LFB11
 	.byte	0x4
-	.4byte	.LCFI11-.LFB11
+	.4byte	.LCFI14-.LFB11
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI15-.LCFI14
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE22:
 .LSFDE24:
@@ -936,7 +841,7 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB12
 	.4byte	.LFE12-.LFB12
 	.byte	0x4
-	.4byte	.LCFI12-.LFB12
+	.4byte	.LCFI16-.LFB12
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -951,12 +856,16 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB13
 	.4byte	.LFE13-.LFB13
 	.byte	0x4
-	.4byte	.LCFI13-.LFB13
+	.4byte	.LCFI17-.LFB13
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI18-.LCFI17
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE26:
 .LSFDE28:
@@ -966,7 +875,7 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB14
 	.4byte	.LFE14-.LFB14
 	.byte	0x4
-	.4byte	.LCFI14-.LFB14
+	.4byte	.LCFI19-.LFB14
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -981,12 +890,16 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB15
 	.4byte	.LFE15-.LFB15
 	.byte	0x4
-	.4byte	.LCFI15-.LFB15
+	.4byte	.LCFI20-.LFB15
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI21-.LCFI20
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE30:
 .LSFDE32:
@@ -996,7 +909,7 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB16
 	.4byte	.LFE16-.LFB16
 	.byte	0x4
-	.4byte	.LCFI16-.LFB16
+	.4byte	.LCFI22-.LFB16
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -1011,12 +924,16 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB17
 	.4byte	.LFE17-.LFB17
 	.byte	0x4
-	.4byte	.LCFI17-.LFB17
+	.4byte	.LCFI23-.LFB17
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI24-.LCFI23
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE34:
 .LSFDE36:
@@ -1026,16 +943,18 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB18
 	.4byte	.LFE18-.LFB18
 	.byte	0x4
-	.4byte	.LCFI18-.LFB18
+	.4byte	.LCFI25-.LFB18
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
 	.byte	0x4
-	.4byte	.LCFI19-.LCFI18
-	.byte	0x88
+	.4byte	.LCFI27-.LCFI25
+	.byte	0x8a
 	.uleb128 0x7
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE36:
 	.section	.text,code
@@ -1043,7 +962,7 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.file 2 "/opt/microchip/xc16/v2.00/bin/bin/../../include/bits/alltypes.h"
 	.file 3 "AX5043_NBM/inc/AX5043/ax5043_experimental.h"
 	.section	.debug_info,info
-	.4byte	0xb82
+	.4byte	0xb61
 	.2byte	0x2
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
@@ -1364,32 +1283,30 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB0
 	.4byte	.LFE0
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x496
+	.byte	0x5f
+	.4byte	0x494
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x9
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0xd
 	.asciz	"gpadcMux"
 	.byte	0x1
 	.byte	0x9
 	.4byte	0x1da
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
+	.byte	0x1
+	.byte	0x51
 	.uleb128 0xe
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0xa
 	.4byte	0xe2
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0xf
 	.byte	0x1
@@ -1401,24 +1318,23 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB1
 	.4byte	.LFE1
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x4e8
+	.byte	0x5f
+	.4byte	0x4e5
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x13
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0xe
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x14
 	.4byte	0xe2
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0xb
 	.byte	0x1
@@ -1429,32 +1345,30 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB2
 	.4byte	.LFE2
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x553
+	.byte	0x5f
+	.4byte	0x54e
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x1f
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x59
 	.uleb128 0xc
 	.4byte	.LASF2
 	.byte	0x1
 	.byte	0x1f
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 3
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0xe
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x20
 	.4byte	0xe2
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0xf
 	.byte	0x1
@@ -1466,24 +1380,23 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB3
 	.4byte	.LFE3
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x5b7
+	.byte	0x5f
+	.4byte	0x5b1
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x2b
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0xe
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x2c
 	.4byte	0xe2
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0xb
 	.byte	0x1
@@ -1494,32 +1407,30 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB4
 	.4byte	.LFE4
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x61e
+	.byte	0x5f
+	.4byte	0x616
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x37
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x59
 	.uleb128 0xc
 	.4byte	.LASF2
 	.byte	0x1
 	.byte	0x37
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 3
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0xe
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x38
 	.4byte	0xe2
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0xf
 	.byte	0x1
@@ -1531,24 +1442,23 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB5
 	.4byte	.LFE5
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x67e
+	.byte	0x5f
+	.4byte	0x675
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x43
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0xe
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x44
 	.4byte	0xe2
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0xb
 	.byte	0x1
@@ -1559,32 +1469,30 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB6
 	.4byte	.LFE6
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x6f1
+	.byte	0x5f
+	.4byte	0x6e6
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x4f
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x59
 	.uleb128 0xc
 	.4byte	.LASF2
 	.byte	0x1
 	.byte	0x4f
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 3
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0xe
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x50
 	.4byte	0xe2
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0xf
 	.byte	0x1
@@ -1596,24 +1504,23 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB7
 	.4byte	.LFE7
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x75d
+	.byte	0x5f
+	.4byte	0x751
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x5b
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0xe
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x5c
 	.4byte	0xe2
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0xf
 	.byte	0x1
@@ -1625,24 +1532,23 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB8
 	.4byte	.LFE8
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x7bf
+	.byte	0x5f
+	.4byte	0x7b2
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x66
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0xe
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x67
 	.4byte	0xe2
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0xf
 	.byte	0x1
@@ -1654,24 +1560,23 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB9
 	.4byte	.LFE9
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x821
+	.byte	0x5f
+	.4byte	0x813
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x71
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0xe
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x72
 	.4byte	0xe2
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0xf
 	.byte	0x1
@@ -1683,32 +1588,28 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB10
 	.4byte	.LFE10
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x894
+	.byte	0x5f
+	.4byte	0x882
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x7c
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x10
 	.asciz	"value"
 	.byte	0x1
 	.byte	0x7d
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
 	.uleb128 0xe
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x7e
 	.4byte	0xe2
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 1
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0xb
 	.byte	0x1
@@ -1719,32 +1620,30 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB11
 	.4byte	.LFE11
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x8f5
+	.byte	0x5f
+	.4byte	0x8e1
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x8a
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0xd
 	.asciz	"source"
 	.byte	0x1
 	.byte	0x8a
 	.4byte	0x25d
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
+	.byte	0x1
+	.byte	0x59
 	.uleb128 0xe
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x8b
 	.4byte	0xe2
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0xf
 	.byte	0x1
@@ -1756,24 +1655,23 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB12
 	.4byte	.LFE12
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x949
+	.byte	0x5f
+	.4byte	0x934
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x96
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0xe
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x97
 	.4byte	0xe2
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0xb
 	.byte	0x1
@@ -1784,32 +1682,30 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB13
 	.4byte	.LFE13
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x9aa
+	.byte	0x5f
+	.4byte	0x993
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0xa2
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x59
 	.uleb128 0xc
 	.4byte	.LASF2
 	.byte	0x1
 	.byte	0xa2
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 3
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0xe
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0xa3
 	.4byte	0xe2
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0xf
 	.byte	0x1
@@ -1821,24 +1717,23 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB14
 	.4byte	.LFE14
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0xa04
+	.byte	0x5f
+	.4byte	0x9ec
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0xae
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0xe
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0xaf
 	.4byte	0xe2
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0xb
 	.byte	0x1
@@ -1849,32 +1744,30 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB15
 	.4byte	.LFE15
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0xa65
+	.byte	0x5f
+	.4byte	0xa4b
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0xba
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x59
 	.uleb128 0xc
 	.4byte	.LASF2
 	.byte	0x1
 	.byte	0xba
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 3
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0xe
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0xbb
 	.4byte	0xe2
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0xf
 	.byte	0x1
@@ -1886,24 +1779,23 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB16
 	.4byte	.LFE16
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0xabf
+	.byte	0x5f
+	.4byte	0xaa4
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0xc6
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0xe
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0xc7
 	.4byte	0xe2
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0xb
 	.byte	0x1
@@ -1914,32 +1806,30 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB17
 	.4byte	.LFE17
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0xb22
+	.byte	0x5f
+	.4byte	0xb05
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0xd2
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x59
 	.uleb128 0xc
 	.4byte	.LASF3
 	.byte	0x1
 	.byte	0xd2
 	.4byte	0x422
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0xe
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0xd3
 	.4byte	0xe2
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0x11
 	.byte	0x1
@@ -1951,31 +1841,27 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.4byte	.LFB18
 	.4byte	.LFE18
 	.byte	0x1
-	.byte	0x5e
+	.byte	0x5f
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0xde
 	.4byte	0xe2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
-	.uleb128 0xe
+	.byte	0x1
+	.byte	0x58
+	.uleb128 0x12
 	.4byte	.LASF3
 	.byte	0x1
 	.byte	0xdf
 	.4byte	0x422
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
 	.uleb128 0xe
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0xe0
 	.4byte	0xe2
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x91
+	.sleb128 -10
 	.byte	0x0
 	.byte	0x0
 	.section	.debug_abbrev,info
@@ -2215,8 +2101,6 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.uleb128 0xb
 	.uleb128 0x49
 	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0xa
 	.byte	0x0
 	.byte	0x0
 	.uleb128 0x11
@@ -2242,56 +2126,69 @@ _AX5043ExperimentalGetDSPModeSkipData:
 	.uleb128 0xa
 	.byte	0x0
 	.byte	0x0
+	.uleb128 0x12
+	.uleb128 0x34
+	.byte	0x0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0x0
+	.byte	0x0
 	.byte	0x0
 	.section	.debug_pubnames,info
 	.4byte	0x35c
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0xb86
+	.4byte	0xb65
 	.4byte	0x435
 	.asciz	"AX5043ExperimentalSetGPADCMux"
-	.4byte	0x496
+	.4byte	0x494
 	.asciz	"AX5043ExperimentalGetGPADCMux"
-	.4byte	0x4e8
+	.4byte	0x4e5
 	.asciz	"AX5043ExperimentalEnableBasebandFilterOutput"
-	.4byte	0x553
+	.4byte	0x54e
 	.asciz	"AX5043ExperimentalIsEnabledBasebandFilterOutput"
-	.4byte	0x5b7
+	.4byte	0x5b1
 	.asciz	"AX5043ExperimentalEnableBasebandDetector"
-	.4byte	0x61e
+	.4byte	0x616
 	.asciz	"AX5043ExperimentalIsEnabledBasebandDetector"
-	.4byte	0x67e
+	.4byte	0x675
 	.asciz	"AX5043ExperimentalEnableBasebandDetectorOutputDriver"
-	.4byte	0x6f1
+	.4byte	0x6e6
 	.asciz	"AX5043ExperimentalIsEnabledBasebandDetectorOutputDriver"
-	.4byte	0x75d
+	.4byte	0x751
 	.asciz	"AX5043ExperimentalGetBasebandIComparatorState"
-	.4byte	0x7bf
+	.4byte	0x7b2
 	.asciz	"AX5043ExperimentalGetBasebandQComparatorState"
-	.4byte	0x821
+	.4byte	0x813
 	.asciz	"AX5043ExperimentalGetDSPModeShiftRegisterValue"
-	.4byte	0x894
+	.4byte	0x882
 	.asciz	"AX5043ExperimentalSetSyncSource"
-	.4byte	0x8f5
+	.4byte	0x8e1
 	.asciz	"AX5043ExperimentalGetSyncSource"
-	.4byte	0x949
+	.4byte	0x934
 	.asciz	"AX5043ExperimentalEnableDSPModeSPI"
-	.4byte	0x9aa
+	.4byte	0x993
 	.asciz	"AX5043ExperimentalIsEnabledDSPModeSPI"
-	.4byte	0xa04
+	.4byte	0x9ec
 	.asciz	"AX5043ExperimentalEnableFSYNCDelay"
-	.4byte	0xa65
+	.4byte	0xa4b
 	.asciz	"AX5043ExperimentalIsEnabledFSYNCDelay"
-	.4byte	0xabf
+	.4byte	0xaa4
 	.asciz	"AX5043ExperimentalSetDSPModeSkipData"
-	.4byte	0xb22
+	.4byte	0xb05
 	.asciz	"AX5043ExperimentalGetDSPModeSkipData"
 	.4byte	0x0
 	.section	.debug_pubtypes,info
 	.4byte	0x68
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0xb86
+	.4byte	0xb65
 	.4byte	0xe2
 	.asciz	"uint8_t"
 	.4byte	0x102

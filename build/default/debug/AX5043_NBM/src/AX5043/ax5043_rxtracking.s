@@ -16,69 +16,62 @@ _AX5043RXTrackingDatarate:
 	.file 1 "AX5043_NBM/src/AX5043/ax5043_rxtracking.c"
 	.loc 1 8 0
 	.set ___PA___,1
-	lnk	#10
+	lnk	#4
 .LCFI0:
-	add	w14,#6,w1
-	mov.b	w0,[w1]
-	.loc 1 9 0
-	mul.uu	w0,#0,w0
-	mov.d	w0,[w14]
+	mov	w8,[w15++]
+.LCFI1:
+	mov.d	w10,[w15++]
+.LCFI2:
+	mov.d	w12,[w15++]
+.LCFI3:
+	mov.b	w0,w8
 	.loc 1 11 0
-	add	w14,#8,w0
-	add	w14,#4,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#14,w3
 	mov.b	#71,w2
-	add	w14,#6,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#12,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 12 0
-	add	w14,#4,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	clr	w1
-	mov.d	w0,[w14]
+	mov.b	[w15-14],w0
+	ze	w0,w12
+	clr	w13
 	.loc 1 13 0
-	add	w14,#8,w0
-	add	w14,#4,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#14,w3
 	mov.b	#70,w2
-	add	w14,#6,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#12,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 14 0
-	add	w14,#4,w0
-	mov.b	[w0],w0
-	ze	w0,w2
-	clr	w3
-	sl	w3,#8,w0
-	lsr	w2,#8,w1
-	ior	w0,w1,w1
-	sl	w2,#8,w0
-	add	w0,[w14],[w14]
-	addc	w1,[++w14],[w14--]
+	mov.b	[w15-14],w2
+	ze	w2,w0
+	clr	w1
+	sl	w1,#8,w10
+	lsr	w0,#8,w11
+	ior	w10,w11,w11
+	sl	w0,#8,w10
 	.loc 1 15 0
-	add	w14,#8,w0
-	add	w14,#4,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#14,w3
 	mov.b	#69,w2
-	add	w14,#6,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#12,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 16 0
-	add	w14,#4,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	clr	w1
-	sl	w0,#0,w1
+	mov.b	[w15-14],w2
+	ze	w2,w1
 	mov	#0,w0
-	add	w0,[w14],[w14]
-	addc	w1,[++w14],[w14--]
-	.loc 1 17 0
-	mov.d	[w14],w0
+	.loc 1 14 0
+	add	w0,w10,w0
+	addc	w1,w11,w1
+	.loc 1 16 0
+	add	w12,w0,w0
+	addc	w13,w1,w1
 	.loc 1 18 0
+	mov.d	[--w15],w12
+	mov.d	[--w15],w10
+	mov	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -91,45 +84,35 @@ _AX5043RXTrackingAmplitude:
 .LFB1:
 	.loc 1 25 0
 	.set ___PA___,1
-	lnk	#8
-.LCFI1:
-	add	w14,#4,w1
-	mov.b	w0,[w1]
-	.loc 1 26 0
-	clr	w0
-	mov	w0,[w14]
+	lnk	#4
+.LCFI4:
+	mov.d	w8,[w15++]
+.LCFI5:
+	mov.b	w0,w8
 	.loc 1 28 0
-	add	w14,#6,w0
-	inc2	w14,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#8,w3
 	mov.b	#73,w2
-	add	w14,#4,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 29 0
-	inc2	w14,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	mov	w0,[w14]
+	mov.b	[w15-8],w0
+	ze	w0,w9
 	.loc 1 30 0
-	add	w14,#6,w0
-	inc2	w14,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#8,w3
 	mov.b	#72,w2
-	add	w14,#4,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 31 0
-	inc2	w14,w0
-	mov.b	[w0],w0
-	ze	w0,w0
+	mov.b	[w15-8],w1
+	ze	w1,w0
 	sl	w0,#8,w0
-	add	w0,[w14],[w14]
-	.loc 1 32 0
-	mov	[w14],w0
+	add	w0,w9,w0
 	.loc 1 33 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -142,46 +125,36 @@ _AX5043RXTrackingPhase:
 .LFB2:
 	.loc 1 40 0
 	.set ___PA___,1
-	lnk	#8
-.LCFI2:
-	add	w14,#4,w1
-	mov.b	w0,[w1]
-	.loc 1 41 0
-	clr	w0
-	mov	w0,[w14]
+	lnk	#4
+.LCFI6:
+	mov.d	w8,[w15++]
+.LCFI7:
+	mov.b	w0,w8
 	.loc 1 43 0
-	add	w14,#6,w0
-	inc2	w14,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#8,w3
 	mov.b	#75,w2
-	add	w14,#4,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 44 0
-	inc2	w14,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	mov	w0,[w14]
+	mov.b	[w15-8],w0
+	ze	w0,w9
 	.loc 1 45 0
-	add	w14,#6,w0
-	inc2	w14,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#8,w3
 	mov.b	#74,w2
-	add	w14,#4,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 46 0
-	inc2	w14,w0
-	mov.b	[w0],w0
-	ze	w0,w0
+	mov.b	[w15-8],w1
+	ze	w1,w0
 	and	w0,#15,w0
 	sl	w0,#8,w0
-	add	w0,[w14],[w14]
-	.loc 1 47 0
-	mov	[w14],w0
+	add	w0,w9,w0
 	.loc 1 48 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -194,58 +167,50 @@ _AX5043RXTrackingSetRFFrequency:
 .LFB3:
 	.loc 1 56 0
 	.set ___PA___,1
-	lnk	#10
-.LCFI3:
-	inc2	w14,w1
-	mov.b	w0,[w1]
-	add	w14,#4,w0
-	mov.d	w2,[w0]
+	lnk	#4
+.LCFI8:
+	mov.d	w8,[w15++]
+.LCFI9:
+	mov	w10,[w15++]
+.LCFI10:
+	mov.b	w0,w10
+	mov.d	w2,w8
 	.loc 1 58 0
-	add	w14,#4,w0
-	mov	[w0],w0
-	mov.b	w0,w0
-	mov.b	w0,[w14]
+	mov.b	w2,[w15-10]
 	.loc 1 59 0
-	add	w14,#8,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#10,w3
 	mov.b	#79,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w10,w1
+	sub	w15,#8,w0
 	rcall	_AX5043WriteShortAddress
 	.loc 1 60 0
-	add	w14,#4,w0
-	mov.d	[w0],w0
-	sl	w1,#8,w2
-	lsr	w0,#8,w0
+	sl	w9,#8,w2
+	lsr	w8,#8,w0
 	ior	w2,w0,w0
-	lsr	w1,#8,w1
-	mov.b	w0,w0
-	mov.b	w0,[w14]
+	lsr	w9,#8,w1
+	mov.b	w0,[w15-10]
 	.loc 1 61 0
-	add	w14,#8,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#10,w3
 	mov.b	#78,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w10,w1
+	sub	w15,#8,w0
 	rcall	_AX5043WriteShortAddress
 	.loc 1 62 0
-	add	w14,#4,w0
-	mov.d	[w0],w0
-	lsr	w1,#0,w0
-	mov.b	w0,w0
-	and.b	w0,#15,w0
-	mov.b	w0,[w14]
+	lsr	w9,#0,w8
+	and.b	w8,#15,w0
+	mov.b	w0,[w15-10]
 	.loc 1 63 0
-	add	w14,#8,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#10,w3
 	mov.b	#77,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w10,w1
+	sub	w15,#8,w0
 	rcall	_AX5043WriteShortAddress
 	.loc 1 64 0
+	mov	[--w15],w10
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -258,83 +223,63 @@ _AX5043RXTrackingGetRFFrequency:
 .LFB4:
 	.loc 1 71 0
 	.set ___PA___,1
-	lnk	#10
-.LCFI4:
-	mov.d	w8,[w15++]
-.LCFI5:
-	add	w14,#6,w1
-	mov.b	w0,[w1]
-	.loc 1 72 0
-	mul.uu	w0,#0,w0
-	mov.d	w0,[w14]
+	lnk	#4
+.LCFI11:
+	mov	w8,[w15++]
+.LCFI12:
+	mov.d	w10,[w15++]
+.LCFI13:
+	mov.b	w0,w8
 	.loc 1 74 0
-	add	w14,#8,w0
-	add	w14,#4,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#10,w3
 	mov.b	#79,w2
-	add	w14,#6,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#8,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 75 0
-	add	w14,#4,w0
-	mov.b	[w0],w0
-	ze	w0,w2
-	clr	w3
-	sl	w3,#12,w0
-	lsr	w2,#4,w1
-	ior	w0,w1,w1
-	sl	w2,#12,w0
-	mov.d	w0,[w14]
+	mov.b	[w15-10],w2
+	ze	w2,w0
+	clr	w1
+	sl	w1,#12,w10
+	lsr	w0,#4,w11
+	ior	w10,w11,w11
+	sl	w0,#12,w10
 	.loc 1 76 0
-	add	w14,#8,w0
-	add	w14,#4,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#10,w3
 	mov.b	#78,w2
-	add	w14,#6,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#8,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 77 0
-	add	w14,#4,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	clr	w1
-	sl	w0,#4,w3
-	mov	#0,w2
-	mov.d	[w14],w0
-	ior	w2,w0,w0
-	ior	w3,w1,w1
-	mov.d	w0,[w14]
+	mov.b	[w15-10],w2
+	ze	w2,w0
+	sl	w0,#4,w1
+	mov	#0,w0
+	ior	w0,w10,w10
+	ior	w1,w11,w11
 	.loc 1 78 0
-	add	w14,#8,w0
-	add	w14,#4,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#10,w3
 	mov.b	#77,w2
-	add	w14,#6,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#8,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 79 0
-	add	w14,#4,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	clr	w1
-	sl	w0,#12,w3
-	mov	#0,w2
-	mov.d	[w14],w0
-	ior	w2,w0,w0
-	ior	w3,w1,w1
-	mov.d	w0,[w14]
+	mov.b	[w15-10],w2
+	sl	w2,#12,w1
+	mov	#0,w0
+	ior	w10,w0,w10
+	ior	w11,w1,w11
 	.loc 1 80 0
-	mov.d	[w14],w0
-	sl	w1,#4,w2
-	lsr	w0,#12,w8
-	ior	w2,w8,w8
-	asr	w1,#12,w9
-	mov.d	w8,w0
+	sl	w11,#4,w2
+	lsr	w10,#12,w0
+	ior	w2,w0,w0
+	asr	w11,#12,w1
 	.loc 1 81 0
-	mov.d	[--w15],w8
+	mov.d	[--w15],w10
+	mov	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -347,43 +292,39 @@ _AX5043RXTrackingSetFrequency:
 .LFB5:
 	.loc 1 89 0
 	.set ___PA___,1
-	lnk	#10
-.LCFI6:
-	inc2	w14,w1
-	mov.b	w0,[w1]
-	add	w14,#4,w0
-	mov.d	w2,[w0]
+	lnk	#4
+.LCFI14:
+	mov.d	w8,[w15++]
+.LCFI15:
+	mov	w10,[w15++]
+.LCFI16:
+	mov.b	w0,w10
+	mov.d	w2,w8
 	.loc 1 91 0
-	add	w14,#4,w0
-	mov	[w0],w0
-	mov.b	w0,w0
-	mov.b	w0,[w14]
+	mov.b	w2,[w15-10]
 	.loc 1 92 0
-	add	w14,#8,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#10,w3
 	mov.b	#81,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w10,w1
+	sub	w15,#8,w0
 	rcall	_AX5043WriteShortAddress
 	.loc 1 93 0
-	add	w14,#4,w0
-	mov.d	[w0],w0
-	sl	w1,#8,w2
-	lsr	w0,#8,w0
-	ior	w2,w0,w0
-	lsr	w1,#8,w1
-	mov.b	w0,w0
-	mov.b	w0,[w14]
+	sl	w9,#8,w0
+	lsr	w8,#8,w8
+	ior	w0,w8,w8
+	lsr	w9,#8,w9
+	mov.b	w8,[w15-10]
 	.loc 1 94 0
-	add	w14,#8,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#10,w3
 	mov.b	#80,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w10,w1
+	sub	w15,#8,w0
 	rcall	_AX5043WriteShortAddress
 	.loc 1 95 0
+	mov	[--w15],w10
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -396,45 +337,35 @@ _AX5043RXTrackingGetFrequency:
 .LFB6:
 	.loc 1 102 0
 	.set ___PA___,1
-	lnk	#8
-.LCFI7:
-	add	w14,#4,w1
-	mov.b	w0,[w1]
-	.loc 1 103 0
-	clr	w0
-	mov	w0,[w14]
+	lnk	#4
+.LCFI17:
+	mov.d	w8,[w15++]
+.LCFI18:
+	mov.b	w0,w8
 	.loc 1 105 0
-	add	w14,#6,w0
-	inc2	w14,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#8,w3
 	mov.b	#81,w2
-	add	w14,#4,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 106 0
-	inc2	w14,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	mov	w0,[w14]
+	mov.b	[w15-8],w0
+	ze	w0,w9
 	.loc 1 107 0
-	add	w14,#6,w0
-	inc2	w14,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#8,w3
 	mov.b	#80,w2
-	add	w14,#4,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 108 0
-	inc2	w14,w0
-	mov.b	[w0],w0
-	ze	w0,w0
+	mov.b	[w15-8],w1
+	ze	w1,w0
 	sl	w0,#8,w0
-	add	w0,[w14],[w14]
-	.loc 1 109 0
-	mov	[w14],w0
+	add	w0,w9,w0
 	.loc 1 110 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -447,47 +378,36 @@ _AX5043RXTrackingFSKDemodulation:
 .LFB7:
 	.loc 1 117 0
 	.set ___PA___,1
-	lnk	#8
-.LCFI8:
-	add	w14,#4,w1
-	mov.b	w0,[w1]
-	.loc 1 118 0
-	clr	w0
-	mov	w0,[w14]
+	lnk	#4
+.LCFI19:
+	mov.d	w8,[w15++]
+.LCFI20:
+	mov.b	w0,w8
 	.loc 1 120 0
-	add	w14,#6,w0
-	inc2	w14,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#8,w3
 	mov.b	#83,w2
-	add	w14,#4,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 121 0
-	inc2	w14,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	mov	w0,[w14]
+	mov.b	[w15-8],w0
+	ze	w0,w9
 	.loc 1 122 0
-	add	w14,#6,w0
-	inc2	w14,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#8,w3
 	mov.b	#82,w2
-	add	w14,#4,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 123 0
-	inc2	w14,w0
-	mov.b	[w0],w0
-	ze	w0,w1
-	mov	#63,w0
-	and	w1,w0,w0
+	mov.b	[w15-8],w1
+	ze	w1,w0
+	and	#63,w0
 	sl	w0,#8,w0
-	add	w0,[w14],[w14]
-	.loc 1 124 0
-	mov	[w14],w0
+	add	w0,w9,w0
 	.loc 1 125 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -500,45 +420,35 @@ _AX5043RXTrackingAFSKDemodulation:
 .LFB8:
 	.loc 1 132 0
 	.set ___PA___,1
-	lnk	#8
-.LCFI9:
-	add	w14,#4,w1
-	mov.b	w0,[w1]
-	.loc 1 133 0
-	clr	w0
-	mov	w0,[w14]
+	lnk	#4
+.LCFI21:
+	mov.d	w8,[w15++]
+.LCFI22:
+	mov.b	w0,w8
 	.loc 1 135 0
-	add	w14,#6,w0
-	inc2	w14,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#8,w3
 	mov.b	#85,w2
-	add	w14,#4,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 136 0
-	inc2	w14,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	mov	w0,[w14]
+	mov.b	[w15-8],w0
+	ze	w0,w9
 	.loc 1 137 0
-	add	w14,#6,w0
-	inc2	w14,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#8,w3
 	mov.b	#84,w2
-	add	w14,#4,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 138 0
-	inc2	w14,w0
-	mov.b	[w0],w0
-	ze	w0,w0
+	mov.b	[w15-8],w1
+	ze	w1,w0
 	sl	w0,#8,w0
-	add	w0,[w14],[w14]
-	.loc 1 139 0
-	mov	[w14],w0
+	add	w0,w9,w0
 	.loc 1 140 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -551,20 +461,17 @@ _AX5043RXTrackingResetDatarate:
 .LFB9:
 	.loc 1 147 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI10:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI23:
 	.loc 1 148 0
-	mov.b	#8,w0
-	mov.b	w0,[w14]
+	mov.b	#8,w1
+	mov.b	w1,[w15-4]
 	.loc 1 149 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov.b	#73,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043WriteShortAddress
 	.loc 1 150 0
 	ulnk	
@@ -579,20 +486,17 @@ _AX5043RXTrackingResetAmplitude:
 .LFB10:
 	.loc 1 157 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI11:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI24:
 	.loc 1 158 0
-	mov.b	#16,w0
-	mov.b	w0,[w14]
+	mov.b	#16,w1
+	mov.b	w1,[w15-4]
 	.loc 1 159 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov.b	#73,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043WriteShortAddress
 	.loc 1 160 0
 	ulnk	
@@ -607,20 +511,17 @@ _AX5043RXTrackingResetPhase:
 .LFB11:
 	.loc 1 167 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI12:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI25:
 	.loc 1 168 0
-	mov.b	#16,w0
-	mov.b	w0,[w14]
+	mov.b	#16,w1
+	mov.b	w1,[w15-4]
 	.loc 1 169 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov.b	#73,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043WriteShortAddress
 	.loc 1 170 0
 	ulnk	
@@ -635,20 +536,17 @@ _AX5043RXTrackingResetRFFrequency:
 .LFB12:
 	.loc 1 177 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI13:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI26:
 	.loc 1 178 0
-	mov.b	#16,w0
-	mov.b	w0,[w14]
+	mov.b	#16,w1
+	mov.b	w1,[w15-4]
 	.loc 1 179 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov.b	#73,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043WriteShortAddress
 	.loc 1 180 0
 	ulnk	
@@ -663,20 +561,17 @@ _AX5043RXTrackingResetFrequency:
 .LFB13:
 	.loc 1 187 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI14:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI27:
 	.loc 1 188 0
-	mov.b	#16,w0
-	mov.b	w0,[w14]
+	mov.b	#16,w1
+	mov.b	w1,[w15-4]
 	.loc 1 189 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov.b	#73,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043WriteShortAddress
 	.loc 1 190 0
 	ulnk	
@@ -715,6 +610,14 @@ _AX5043RXTrackingResetFrequency:
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI3-.LCFI0
+	.byte	0x8c
+	.uleb128 0x8
+	.byte	0x8a
+	.uleb128 0x6
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE0:
 .LSFDE2:
@@ -724,12 +627,16 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB1
 	.4byte	.LFE1-.LFB1
 	.byte	0x4
-	.4byte	.LCFI1-.LFB1
+	.4byte	.LCFI4-.LFB1
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI5-.LCFI4
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE2:
 .LSFDE4:
@@ -739,12 +646,16 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB2
 	.4byte	.LFE2-.LFB2
 	.byte	0x4
-	.4byte	.LCFI2-.LFB2
+	.4byte	.LCFI6-.LFB2
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI7-.LCFI6
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE4:
 .LSFDE6:
@@ -754,12 +665,18 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB3
 	.4byte	.LFE3-.LFB3
 	.byte	0x4
-	.4byte	.LCFI3-.LFB3
+	.4byte	.LCFI8-.LFB3
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI10-.LCFI8
+	.byte	0x8a
+	.uleb128 0x7
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE6:
 .LSFDE8:
@@ -769,16 +686,18 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB4
 	.4byte	.LFE4-.LFB4
 	.byte	0x4
-	.4byte	.LCFI4-.LFB4
+	.4byte	.LCFI11-.LFB4
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
 	.byte	0x4
-	.4byte	.LCFI5-.LCFI4
+	.4byte	.LCFI13-.LCFI11
+	.byte	0x8a
+	.uleb128 0x6
 	.byte	0x88
-	.uleb128 0x8
+	.uleb128 0x5
 	.align	4
 .LEFDE8:
 .LSFDE10:
@@ -788,12 +707,18 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB5
 	.4byte	.LFE5-.LFB5
 	.byte	0x4
-	.4byte	.LCFI6-.LFB5
+	.4byte	.LCFI14-.LFB5
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI16-.LCFI14
+	.byte	0x8a
+	.uleb128 0x7
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE10:
 .LSFDE12:
@@ -803,12 +728,16 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB6
 	.4byte	.LFE6-.LFB6
 	.byte	0x4
-	.4byte	.LCFI7-.LFB6
+	.4byte	.LCFI17-.LFB6
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI18-.LCFI17
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE12:
 .LSFDE14:
@@ -818,12 +747,16 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB7
 	.4byte	.LFE7-.LFB7
 	.byte	0x4
-	.4byte	.LCFI8-.LFB7
+	.4byte	.LCFI19-.LFB7
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI20-.LCFI19
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE14:
 .LSFDE16:
@@ -833,12 +766,16 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB8
 	.4byte	.LFE8-.LFB8
 	.byte	0x4
-	.4byte	.LCFI9-.LFB8
+	.4byte	.LCFI21-.LFB8
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI22-.LCFI21
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE16:
 .LSFDE18:
@@ -848,7 +785,7 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB9
 	.4byte	.LFE9-.LFB9
 	.byte	0x4
-	.4byte	.LCFI10-.LFB9
+	.4byte	.LCFI23-.LFB9
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -863,7 +800,7 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB10
 	.4byte	.LFE10-.LFB10
 	.byte	0x4
-	.4byte	.LCFI11-.LFB10
+	.4byte	.LCFI24-.LFB10
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -878,7 +815,7 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB11
 	.4byte	.LFE11-.LFB11
 	.byte	0x4
-	.4byte	.LCFI12-.LFB11
+	.4byte	.LCFI25-.LFB11
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -893,7 +830,7 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB12
 	.4byte	.LFE12-.LFB12
 	.byte	0x4
-	.4byte	.LCFI13-.LFB12
+	.4byte	.LCFI26-.LFB12
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -908,7 +845,7 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB13
 	.4byte	.LFE13-.LFB13
 	.byte	0x4
-	.4byte	.LCFI14-.LFB13
+	.4byte	.LCFI27-.LFB13
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -920,7 +857,7 @@ _AX5043RXTrackingResetFrequency:
 .Letext0:
 	.file 2 "/opt/microchip/xc16/v2.00/bin/bin/../../include/bits/alltypes.h"
 	.section	.debug_info,info
-	.4byte	0x66c
+	.4byte	0x651
 	.2byte	0x2
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
@@ -999,32 +936,28 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB0
 	.4byte	.LFE0
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x1dd
+	.byte	0x5f
+	.4byte	0x1d9
 	.uleb128 0x5
-	.4byte	.LASF1
+	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x8
 	.4byte	0xfe
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 6
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0x6
 	.asciz	"datarate"
 	.byte	0x1
 	.byte	0x9
 	.4byte	0x13e
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
 	.uleb128 0x7
-	.4byte	.LASF0
+	.4byte	.LASF1
 	.byte	0x1
 	.byte	0xa
 	.4byte	0xfe
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
+	.byte	0x91
+	.sleb128 -14
 	.byte	0x0
 	.uleb128 0x4
 	.byte	0x1
@@ -1036,32 +969,28 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB1
 	.4byte	.LFE1
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x23f
+	.byte	0x5f
+	.4byte	0x237
 	.uleb128 0x5
-	.4byte	.LASF1
+	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x19
 	.4byte	0xfe
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0x6
 	.asciz	"amplitude"
 	.byte	0x1
 	.byte	0x1a
 	.4byte	0x11e
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
 	.uleb128 0x7
-	.4byte	.LASF0
+	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x1b
 	.4byte	0xfe
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0x4
 	.byte	0x1
@@ -1073,32 +1002,28 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB2
 	.4byte	.LFE2
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x299
+	.byte	0x5f
+	.4byte	0x28d
 	.uleb128 0x5
-	.4byte	.LASF1
+	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x28
 	.4byte	0xfe
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0x6
 	.asciz	"phase"
 	.byte	0x1
 	.byte	0x29
 	.4byte	0x11e
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
 	.uleb128 0x7
-	.4byte	.LASF0
+	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x2a
 	.4byte	0xfe
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0x8
 	.byte	0x1
@@ -1109,32 +1034,35 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB3
 	.4byte	.LFE3
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x2fe
+	.byte	0x5f
+	.4byte	0x2f5
 	.uleb128 0x5
-	.4byte	.LASF1
+	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x38
 	.4byte	0xfe
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x5a
 	.uleb128 0x9
 	.asciz	"trackRFFreq"
 	.byte	0x1
 	.byte	0x38
 	.4byte	0x13e
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
+	.byte	0x6
+	.byte	0x58
+	.byte	0x93
+	.uleb128 0x2
+	.byte	0x59
+	.byte	0x93
+	.uleb128 0x2
 	.uleb128 0x7
-	.4byte	.LASF0
+	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x39
 	.4byte	0xfe
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -10
 	.byte	0x0
 	.uleb128 0x4
 	.byte	0x1
@@ -1146,32 +1074,28 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB4
 	.4byte	.LFE4
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x35f
+	.byte	0x5f
+	.4byte	0x352
 	.uleb128 0x5
-	.4byte	.LASF1
+	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x47
 	.4byte	0xfe
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 6
-	.uleb128 0x7
+	.byte	0x1
+	.byte	0x58
+	.uleb128 0xa
 	.4byte	.LASF2
 	.byte	0x1
 	.byte	0x48
 	.4byte	0xd2
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
 	.uleb128 0x7
-	.4byte	.LASF0
+	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x49
 	.4byte	0xfe
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
+	.byte	0x91
+	.sleb128 -10
 	.byte	0x0
 	.uleb128 0x8
 	.byte	0x1
@@ -1182,32 +1106,35 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB5
 	.4byte	.LFE5
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x3c0
+	.byte	0x5f
+	.4byte	0x3b6
 	.uleb128 0x5
-	.4byte	.LASF1
+	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x59
 	.4byte	0xfe
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x5a
 	.uleb128 0x9
 	.asciz	"trackFreq"
 	.byte	0x1
 	.byte	0x59
 	.4byte	0x13e
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
+	.byte	0x6
+	.byte	0x58
+	.byte	0x93
+	.uleb128 0x2
+	.byte	0x59
+	.byte	0x93
+	.uleb128 0x2
 	.uleb128 0x7
-	.4byte	.LASF0
+	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x5a
 	.4byte	0xfe
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -10
 	.byte	0x0
 	.uleb128 0x4
 	.byte	0x1
@@ -1219,32 +1146,28 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB6
 	.4byte	.LFE6
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x41f
+	.byte	0x5f
+	.4byte	0x411
 	.uleb128 0x5
-	.4byte	.LASF1
+	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x66
 	.4byte	0xfe
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
-	.uleb128 0x7
+	.byte	0x1
+	.byte	0x58
+	.uleb128 0xa
 	.4byte	.LASF2
 	.byte	0x1
 	.byte	0x67
 	.4byte	0xbc
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
 	.uleb128 0x7
-	.4byte	.LASF0
+	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x68
 	.4byte	0xfe
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0x4
 	.byte	0x1
@@ -1256,32 +1179,28 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB7
 	.4byte	.LFE7
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x484
+	.byte	0x5f
+	.4byte	0x472
 	.uleb128 0x5
-	.4byte	.LASF1
+	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x75
 	.4byte	0xfe
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0x6
 	.asciz	"fskDem"
 	.byte	0x1
 	.byte	0x76
 	.4byte	0x11e
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
 	.uleb128 0x7
-	.4byte	.LASF0
+	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x77
 	.4byte	0xfe
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0x4
 	.byte	0x1
@@ -1293,32 +1212,28 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB8
 	.4byte	.LFE8
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x4eb
+	.byte	0x5f
+	.4byte	0x4d5
 	.uleb128 0x5
-	.4byte	.LASF1
+	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x84
 	.4byte	0xfe
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0x6
 	.asciz	"afskDem"
 	.byte	0x1
 	.byte	0x85
 	.4byte	0x11e
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
 	.uleb128 0x7
-	.4byte	.LASF0
+	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x86
 	.4byte	0xfe
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0x8
 	.byte	0x1
@@ -1329,24 +1244,23 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB9
 	.4byte	.LFE9
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x539
+	.byte	0x5f
+	.4byte	0x522
 	.uleb128 0x5
-	.4byte	.LASF1
+	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x93
 	.4byte	0xfe
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x7
-	.4byte	.LASF0
+	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x94
 	.4byte	0xfe
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x8
 	.byte	0x1
@@ -1357,24 +1271,23 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB10
 	.4byte	.LFE10
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x588
+	.byte	0x5f
+	.4byte	0x570
 	.uleb128 0x5
-	.4byte	.LASF1
+	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x9d
 	.4byte	0xfe
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x7
-	.4byte	.LASF0
+	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x9e
 	.4byte	0xfe
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x8
 	.byte	0x1
@@ -1385,24 +1298,23 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB11
 	.4byte	.LFE11
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x5d3
+	.byte	0x5f
+	.4byte	0x5ba
 	.uleb128 0x5
-	.4byte	.LASF1
+	.4byte	.LASF0
 	.byte	0x1
 	.byte	0xa7
 	.4byte	0xfe
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x7
-	.4byte	.LASF0
+	.4byte	.LASF1
 	.byte	0x1
 	.byte	0xa8
 	.4byte	0xfe
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x8
 	.byte	0x1
@@ -1413,26 +1325,25 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB12
 	.4byte	.LFE12
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x624
+	.byte	0x5f
+	.4byte	0x60a
 	.uleb128 0x5
-	.4byte	.LASF1
+	.4byte	.LASF0
 	.byte	0x1
 	.byte	0xb1
 	.4byte	0xfe
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x7
-	.4byte	.LASF0
+	.4byte	.LASF1
 	.byte	0x1
 	.byte	0xb2
 	.4byte	0xfe
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
-	.uleb128 0xa
+	.uleb128 0xb
 	.byte	0x1
 	.asciz	"AX5043RXTrackingResetFrequency"
 	.byte	0x1
@@ -1441,23 +1352,22 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	.LFB13
 	.4byte	.LFE13
 	.byte	0x1
-	.byte	0x5e
+	.byte	0x5f
 	.uleb128 0x5
-	.4byte	.LASF1
+	.4byte	.LASF0
 	.byte	0x1
 	.byte	0xbb
 	.4byte	0xfe
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x7
-	.4byte	.LASF0
+	.4byte	.LASF1
 	.byte	0x1
 	.byte	0xbc
 	.4byte	0xfe
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.byte	0x0
 	.section	.debug_abbrev,info
@@ -1555,8 +1465,6 @@ _AX5043RXTrackingResetFrequency:
 	.uleb128 0xb
 	.uleb128 0x49
 	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0xa
 	.byte	0x0
 	.byte	0x0
 	.uleb128 0x7
@@ -1613,6 +1521,19 @@ _AX5043RXTrackingResetFrequency:
 	.byte	0x0
 	.byte	0x0
 	.uleb128 0xa
+	.uleb128 0x34
+	.byte	0x0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0x0
+	.byte	0x0
+	.uleb128 0xb
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -1638,41 +1559,41 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	0x1e0
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0x670
+	.4byte	0x655
 	.4byte	0x17d
 	.asciz	"AX5043RXTrackingDatarate"
-	.4byte	0x1dd
+	.4byte	0x1d9
 	.asciz	"AX5043RXTrackingAmplitude"
-	.4byte	0x23f
+	.4byte	0x237
 	.asciz	"AX5043RXTrackingPhase"
-	.4byte	0x299
+	.4byte	0x28d
 	.asciz	"AX5043RXTrackingSetRFFrequency"
-	.4byte	0x2fe
+	.4byte	0x2f5
 	.asciz	"AX5043RXTrackingGetRFFrequency"
-	.4byte	0x35f
+	.4byte	0x352
 	.asciz	"AX5043RXTrackingSetFrequency"
-	.4byte	0x3c0
+	.4byte	0x3b6
 	.asciz	"AX5043RXTrackingGetFrequency"
-	.4byte	0x41f
+	.4byte	0x411
 	.asciz	"AX5043RXTrackingFSKDemodulation"
-	.4byte	0x484
+	.4byte	0x472
 	.asciz	"AX5043RXTrackingAFSKDemodulation"
-	.4byte	0x4eb
+	.4byte	0x4d5
 	.asciz	"AX5043RXTrackingResetDatarate"
-	.4byte	0x539
+	.4byte	0x522
 	.asciz	"AX5043RXTrackingResetAmplitude"
-	.4byte	0x588
+	.4byte	0x570
 	.asciz	"AX5043RXTrackingResetPhase"
-	.4byte	0x5d3
+	.4byte	0x5ba
 	.asciz	"AX5043RXTrackingResetRFFrequency"
-	.4byte	0x624
+	.4byte	0x60a
 	.asciz	"AX5043RXTrackingResetFrequency"
 	.4byte	0x0
 	.section	.debug_pubtypes,info
 	.4byte	0x4c
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0x670
+	.4byte	0x655
 	.4byte	0xbc
 	.asciz	"int16_t"
 	.4byte	0xd2
@@ -1695,9 +1616,9 @@ _AX5043RXTrackingResetFrequency:
 	.4byte	0x0
 	.4byte	0x0
 	.section	.debug_str,info
-.LASF0:
-	.asciz	"config"
 .LASF1:
+	.asciz	"config"
+.LASF0:
 	.asciz	"interfaceID"
 .LASF2:
 	.asciz	"frequency"

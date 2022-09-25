@@ -16,21 +16,17 @@ _AX5043GeneralRevision:
 	.file 1 "AX5043_NBM/src/AX5043/ax5043_general.c"
 	.loc 1 8 0
 	.set ___PA___,1
-	lnk	#6
+	lnk	#4
 .LCFI0:
-	inc2	w14,w1
-	mov.b	w0,[w1]
 	.loc 1 10 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	clr.b	w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadShortAddress
-	.loc 1 11 0
-	mov.b	[w14],w0
 	.loc 1 12 0
+	mov.b	[w15-4],w0
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -43,21 +39,17 @@ _AX5043GeneralScratch:
 .LFB1:
 	.loc 1 19 0
 	.set ___PA___,1
-	lnk	#6
+	lnk	#4
 .LCFI1:
-	inc2	w14,w1
-	mov.b	w0,[w1]
 	.loc 1 21 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
-	mov.b	#1,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	sub	w15,#4,w3
+	mov.b	w4,w2
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadShortAddress
-	.loc 1 22 0
-	mov.b	[w14],w0
 	.loc 1 23 0
+	mov.b	[w15-4],w0
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -70,24 +62,19 @@ _AX5043GeneralRadioState:
 .LFB2:
 	.loc 1 30 0
 	.set ___PA___,1
-	lnk	#6
+	lnk	#4
 .LCFI2:
-	inc2	w14,w1
-	mov.b	w0,[w1]
 	.loc 1 32 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov.b	#28,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 33 0
-	mov.b	[w14],w0
-	and.b	w0,#15,w0
-	mov.b	w0,[w14]
+	mov.b	[w15-4],w1
+	and.b	w1,#15,w0
 	.loc 1 34 0
-	mov.b	[w14],w0
 	ze	w0,w0
 	.loc 1 35 0
 	ulnk	
@@ -102,24 +89,18 @@ _AX5043GeneralXTALStatus:
 .LFB3:
 	.loc 1 42 0
 	.set ___PA___,1
-	lnk	#6
+	lnk	#4
 .LCFI3:
-	inc2	w14,w1
-	mov.b	w0,[w1]
 	.loc 1 44 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov.b	#29,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 45 0
-	mov.b	[w14],w0
-	and.b	w0,#1,w0
-	mov.b	w0,[w14]
-	.loc 1 46 0
-	mov.b	[w14],w0
+	mov.b	[w15-4],w1
+	and.b	w1,#1,w0
 	.loc 1 47 0
 	ulnk	
 	return	
@@ -133,22 +114,17 @@ _AX5043GeneralGetRSSI:
 .LFB4:
 	.loc 1 54 0
 	.set ___PA___,1
-	lnk	#6
+	lnk	#4
 .LCFI4:
-	inc2	w14,w1
-	mov.b	w0,[w1]
 	.loc 1 56 0
-	mov	w14,w1
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#4,w3
 	mov.b	#64,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadShortAddress
-	.loc 1 57 0
-	mov.b	[w14],w0
 	.loc 1 58 0
+	mov.b	[w15-4],w0
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -163,16 +139,13 @@ _AX5043GeneralSetBackgroundNoise:
 	.set ___PA___,1
 	lnk	#4
 .LCFI5:
-	mov.b	w0,[w14]
-	inc	w14,w0
-	mov.b	w1,[w0]
+	mov.b	w1,[w15-4]
 	.loc 1 67 0
-	inc2	w14,w0
-	inc	w14,w1
 	mov	#1,w4
-	mov	w1,w3
+	sub	w15,#4,w3
 	mov.b	#65,w2
-	mov.b	[w14],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043WriteShortAddress
 	.loc 1 68 0
 	ulnk	
@@ -187,21 +160,17 @@ _AX5043GeneralGetBackgroundNoise:
 .LFB6:
 	.loc 1 75 0
 	.set ___PA___,1
-	lnk	#6
+	lnk	#4
 .LCFI6:
-	inc2	w14,w1
-	mov.b	w0,[w1]
 	.loc 1 77 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov.b	#65,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadShortAddress
-	.loc 1 78 0
-	mov.b	[w14],w0
 	.loc 1 79 0
+	mov.b	[w15-4],w0
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -214,21 +183,17 @@ _AX5043GeneralGetAGCCurrentGain:
 .LFB7:
 	.loc 1 86 0
 	.set ___PA___,1
-	lnk	#6
+	lnk	#4
 .LCFI7:
-	inc2	w14,w1
-	mov.b	w0,[w1]
 	.loc 1 88 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov.b	#67,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadShortAddress
-	.loc 1 89 0
-	mov.b	[w14],w0
 	.loc 1 90 0
+	mov.b	[w15-4],w0
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -241,37 +206,33 @@ _AX5043GeneralSetEnableAntennaDiversity:
 .LFB8:
 	.loc 1 98 0
 	.set ___PA___,1
-	lnk	#6
+	lnk	#4
 .LCFI8:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#3,w0
-	mov.b	w1,[w0]
+	mov.d	w8,[w15++]
+.LCFI9:
+	mov.b	w0,w8
+	mov.b	w1,w9
 	.loc 1 100 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov.b	#66,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 101 0
-	mov.b	[w14],w0
-	mov.b	w0,w1
-	bclr.b	w1,#0
-	add	w14,#3,w0
-	mov.b	[w0],w0
-	ior.b	w1,w0,w0
-	mov.b	w0,[w14]
+	mov.b	[w15-8],w0
+	bclr.b	w0,#0
+	ior.b	w9,w0,w0
+	mov.b	w0,[w15-8]
 	.loc 1 102 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov.b	#66,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteShortAddress
 	.loc 1 103 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -284,21 +245,18 @@ _AX5043GeneralGetAntennaDiversity:
 .LFB9:
 	.loc 1 110 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI9:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI10:
 	.loc 1 112 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov.b	#66,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 113 0
-	mov.b	[w14],w0
-	and.b	w0,#1,w0
+	mov.b	[w15-4],w1
+	and.b	w1,#1,w0
 	.loc 1 114 0
 	ulnk	
 	return	
@@ -312,40 +270,34 @@ _AX5043GeneralSetAntennaSelection:
 .LFB10:
 	.loc 1 122 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI10:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#3,w0
-	mov.b	w1,[w0]
+	lnk	#4
+.LCFI11:
+	mov.d	w8,[w15++]
+.LCFI12:
+	mov.b	w0,w9
+	mov.b	w1,w8
 	.loc 1 124 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov.b	#66,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 125 0
-	mov.b	[w14],w0
-	mov.b	w0,w1
-	bclr.b	w1,#1
-	add	w14,#3,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	add	w0,w0,w0
-	mov.b	w0,w0
-	ior.b	w1,w0,w0
-	mov.b	w0,[w14]
+	add.b	w8,w8,w8
+	mov.b	[w15-8],w0
+	bclr.b	w0,#1
+	ior.b	w8,w0,w0
+	mov.b	w0,[w15-8]
 	.loc 1 126 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov.b	#66,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteShortAddress
 	.loc 1 127 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -358,24 +310,19 @@ _AX5043GeneralGetAntennaSelection:
 .LFB11:
 	.loc 1 134 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI11:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI13:
 	.loc 1 136 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov.b	#66,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 137 0
-	mov.b	[w14],w0
-	ze	w0,w0
-	and	w0,#2,w0
-	asr	w0,w0
-	mov.b	w0,w0
+	mov.b	[w15-4],w1
+	ze	w1,w0
+	bfext	#1,#1,w0,w0
 	.loc 1 138 0
 	ulnk	
 	return	
@@ -389,24 +336,17 @@ _AX5043GeneralSetXTALLoadCap:
 .LFB12:
 	.loc 1 146 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI12:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#3,w0
-	mov.b	w1,[w0]
+	lnk	#4
+.LCFI14:
 	.loc 1 147 0
-	add	w14,#3,w0
-	mov.b	[w0],w0
-	and.b	#63,w0
-	mov.b	w0,[w14]
+	and.b	#63,w1
+	mov.b	w1,[w15-4]
 	.loc 1 148 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov.b	#-124,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043WriteShortAddress
 	.loc 1 149 0
 	ulnk	
@@ -421,20 +361,17 @@ _AX5043GeneralGetXTALLoadCap:
 .LFB13:
 	.loc 1 156 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI13:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI15:
 	.loc 1 158 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov.b	#-124,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043WriteShortAddress
 	.loc 1 159 0
-	mov.b	[w14],w0
+	mov.b	[w15-4],w0
 	and.b	#63,w0
 	.loc 1 160 0
 	ulnk	
@@ -449,38 +386,34 @@ _AX5043GeneralSetModulation:
 .LFB14:
 	.loc 1 168 0
 	.set ___PA___,1
-	lnk	#8
-.LCFI14:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#4,w0
-	mov	w1,[w0]
+	lnk	#4
+.LCFI16:
+	mov.d	w8,[w15++]
+.LCFI17:
+	mov.b	w0,w8
+	mov	w1,w9
 	.loc 1 170 0
-	add	w14,#6,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov.b	#16,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 171 0
-	mov.b	[w14],w1
 	mov.b	#-16,w0
-	and.b	w1,w0,w1
-	add	w14,#4,w0
-	mov	[w0],w0
-	mov.b	w0,w0
-	ior.b	w1,w0,w0
-	mov.b	w0,[w14]
+	mov.b	[w15-8],w1
+	and.b	w1,w0,w0
+	ior.b	w0,w9,w0
+	mov.b	w0,[w15-8]
 	.loc 1 172 0
-	add	w14,#6,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov.b	#16,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteShortAddress
 	.loc 1 173 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -493,21 +426,18 @@ _AX5043GeneralGetModulation:
 .LFB15:
 	.loc 1 180 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI15:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI18:
 	.loc 1 182 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov.b	#16,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 183 0
-	mov.b	[w14],w0
-	ze	w0,w0
+	mov.b	[w15-4],w1
+	ze	w1,w0
 	and	w0,#15,w0
 	.loc 1 184 0
 	ulnk	
@@ -522,40 +452,34 @@ _AX5043GeneralSetRXHalfSpeed:
 .LFB16:
 	.loc 1 192 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI16:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#3,w0
-	mov.b	w1,[w0]
+	lnk	#4
+.LCFI19:
+	mov.d	w8,[w15++]
+.LCFI20:
+	mov.b	w0,w9
+	mov.b	w1,w8
 	.loc 1 194 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov.b	#16,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 195 0
-	mov.b	[w14],w0
-	mov.b	w0,w1
-	bclr.b	w1,#4
-	add	w14,#3,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	sl	w0,#4,w0
-	mov.b	w0,w0
-	ior.b	w1,w0,w0
-	mov.b	w0,[w14]
+	sl	w8,#4,w8
+	mov.b	[w15-8],w0
+	bclr.b	w0,#4
+	ior.b	w8,w0,w0
+	mov.b	w0,[w15-8]
 	.loc 1 196 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov.b	#16,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteShortAddress
 	.loc 1 197 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -568,24 +492,19 @@ _AX5043GeneralGetRXHalfSpeed:
 .LFB17:
 	.loc 1 204 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI17:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI21:
 	.loc 1 206 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov.b	#16,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadShortAddress
 	.loc 1 207 0
-	mov.b	[w14],w0
-	ze	w0,w0
-	and	w0,#16,w0
-	asr	w0,#4,w0
-	mov.b	w0,w0
+	mov.b	[w15-4],w1
+	ze	w1,w0
+	bfext	#4,#1,w0,w0
 	.loc 1 208 0
 	ulnk	
 	return	
@@ -743,6 +662,10 @@ _AX5043GeneralGetRXHalfSpeed:
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI9-.LCFI8
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE16:
 .LSFDE18:
@@ -752,7 +675,7 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB9
 	.4byte	.LFE9-.LFB9
 	.byte	0x4
-	.4byte	.LCFI9-.LFB9
+	.4byte	.LCFI10-.LFB9
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -767,12 +690,16 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB10
 	.4byte	.LFE10-.LFB10
 	.byte	0x4
-	.4byte	.LCFI10-.LFB10
+	.4byte	.LCFI11-.LFB10
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI12-.LCFI11
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE20:
 .LSFDE22:
@@ -782,7 +709,7 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB11
 	.4byte	.LFE11-.LFB11
 	.byte	0x4
-	.4byte	.LCFI11-.LFB11
+	.4byte	.LCFI13-.LFB11
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -797,7 +724,7 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB12
 	.4byte	.LFE12-.LFB12
 	.byte	0x4
-	.4byte	.LCFI12-.LFB12
+	.4byte	.LCFI14-.LFB12
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -812,7 +739,7 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB13
 	.4byte	.LFE13-.LFB13
 	.byte	0x4
-	.4byte	.LCFI13-.LFB13
+	.4byte	.LCFI15-.LFB13
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -827,12 +754,16 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB14
 	.4byte	.LFE14-.LFB14
 	.byte	0x4
-	.4byte	.LCFI14-.LFB14
+	.4byte	.LCFI16-.LFB14
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI17-.LCFI16
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE28:
 .LSFDE30:
@@ -842,7 +773,7 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB15
 	.4byte	.LFE15-.LFB15
 	.byte	0x4
-	.4byte	.LCFI15-.LFB15
+	.4byte	.LCFI18-.LFB15
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -857,12 +788,16 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB16
 	.4byte	.LFE16-.LFB16
 	.byte	0x4
-	.4byte	.LCFI16-.LFB16
+	.4byte	.LCFI19-.LFB16
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI20-.LCFI19
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE32:
 .LSFDE34:
@@ -872,7 +807,7 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB17
 	.4byte	.LFE17-.LFB17
 	.byte	0x4
-	.4byte	.LCFI17-.LFB17
+	.4byte	.LCFI21-.LFB17
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -885,7 +820,7 @@ _AX5043GeneralGetRXHalfSpeed:
 	.file 2 "/opt/microchip/xc16/v2.00/bin/bin/../../include/bits/alltypes.h"
 	.file 3 "AX5043_NBM/inc/AX5043/ax5043_general.h"
 	.section	.debug_info,info
-	.4byte	0x8cd
+	.4byte	0x8b6
 	.2byte	0x2
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
@@ -1031,24 +966,23 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB0
 	.4byte	.LFE0
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x30c
+	.byte	0x5f
+	.4byte	0x30b
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x8
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x8
 	.asciz	"revision"
 	.byte	0x1
 	.byte	0x9
 	.4byte	0xeb
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x6
 	.byte	0x1
@@ -1060,24 +994,23 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB1
 	.4byte	.LFE1
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x359
+	.byte	0x5f
+	.4byte	0x357
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x13
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x8
 	.asciz	"scratch"
 	.byte	0x1
 	.byte	0x14
 	.4byte	0xeb
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x6
 	.byte	0x1
@@ -1089,24 +1022,23 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB2
 	.4byte	.LFE2
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x3ac
+	.byte	0x5f
+	.4byte	0x3a9
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x1e
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x8
 	.asciz	"radioState"
 	.byte	0x1
 	.byte	0x1f
 	.4byte	0xeb
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x6
 	.byte	0x1
@@ -1118,24 +1050,23 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB3
 	.4byte	.LFE3
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x3fe
+	.byte	0x5f
+	.4byte	0x3fa
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x2a
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x8
 	.asciz	"xtalState"
 	.byte	0x1
 	.byte	0x2b
 	.4byte	0xeb
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x6
 	.byte	0x1
@@ -1147,24 +1078,23 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB4
 	.4byte	.LFE4
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x448
+	.byte	0x5f
+	.4byte	0x443
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x36
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x8
 	.asciz	"rssi"
 	.byte	0x1
 	.byte	0x37
 	.4byte	0xaa
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x9
 	.byte	0x1
@@ -1175,24 +1105,23 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB5
 	.4byte	.LFE5
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x49a
+	.byte	0x5f
+	.4byte	0x494
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x42
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0xa
 	.asciz	"noise"
 	.byte	0x1
 	.byte	0x42
 	.4byte	0xeb
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 1
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x6
 	.byte	0x1
@@ -1204,24 +1133,23 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB6
 	.4byte	.LFE6
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x4f0
+	.byte	0x5f
+	.4byte	0x4e9
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x4b
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x8
 	.asciz	"noise"
 	.byte	0x1
 	.byte	0x4c
 	.4byte	0xeb
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x6
 	.byte	0x1
@@ -1233,24 +1161,23 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB7
 	.4byte	.LFE7
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x546
+	.byte	0x5f
+	.4byte	0x53e
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x56
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x8
 	.asciz	"agcCnt"
 	.byte	0x1
 	.byte	0x57
 	.4byte	0xeb
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x9
 	.byte	0x1
@@ -1261,32 +1188,30 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB8
 	.4byte	.LFE8
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x5b8
+	.byte	0x5f
+	.4byte	0x5ae
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x62
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0xa
 	.asciz	"antennaDiversity"
 	.byte	0x1
 	.byte	0x62
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 3
+	.byte	0x1
+	.byte	0x59
 	.uleb128 0xb
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x63
 	.4byte	0xeb
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0x6
 	.byte	0x1
@@ -1298,24 +1223,23 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB9
 	.4byte	.LFE9
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x60d
+	.byte	0x5f
+	.4byte	0x602
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x6e
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0xb
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x6f
 	.4byte	0xeb
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x9
 	.byte	0x1
@@ -1326,32 +1250,30 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB10
 	.4byte	.LFE10
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x676
+	.byte	0x5f
+	.4byte	0x669
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x7a
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x59
 	.uleb128 0xa
 	.asciz	"antennaSelect"
 	.byte	0x1
 	.byte	0x7a
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 3
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0xb
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x7b
 	.4byte	0xeb
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0x6
 	.byte	0x1
@@ -1363,24 +1285,23 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB11
 	.4byte	.LFE11
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x6cb
+	.byte	0x5f
+	.4byte	0x6bd
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x86
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0xb
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x87
 	.4byte	0xeb
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x9
 	.byte	0x1
@@ -1391,32 +1312,30 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB12
 	.4byte	.LFE12
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x725
+	.byte	0x5f
+	.4byte	0x715
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x92
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0xa
 	.asciz	"cap"
 	.byte	0x1
 	.byte	0x92
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 3
+	.byte	0x1
+	.byte	0x51
 	.uleb128 0xb
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x93
 	.4byte	0xeb
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x6
 	.byte	0x1
@@ -1428,24 +1347,23 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB13
 	.4byte	.LFE13
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x775
+	.byte	0x5f
+	.4byte	0x764
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x9c
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x8
 	.asciz	"cap"
 	.byte	0x1
 	.byte	0x9d
 	.4byte	0xeb
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x9
 	.byte	0x1
@@ -1456,32 +1374,30 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB14
 	.4byte	.LFE14
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x7d5
+	.byte	0x5f
+	.4byte	0x7c2
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0xa8
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0xa
 	.asciz	"modulation"
 	.byte	0x1
 	.byte	0xa8
 	.4byte	0x2aa
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 4
+	.byte	0x1
+	.byte	0x59
 	.uleb128 0xb
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0xa9
 	.4byte	0xeb
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0x6
 	.byte	0x1
@@ -1493,24 +1409,23 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB15
 	.4byte	.LFE15
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x824
+	.byte	0x5f
+	.4byte	0x810
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0xb4
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0xb
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0xb5
 	.4byte	0xeb
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x9
 	.byte	0x1
@@ -1521,32 +1436,30 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB16
 	.4byte	.LFE16
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x884
+	.byte	0x5f
+	.4byte	0x86e
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0xc0
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x59
 	.uleb128 0xa
 	.asciz	"halfSpeed"
 	.byte	0x1
 	.byte	0xc0
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 3
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0xb
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0xc1
 	.4byte	0xeb
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0xc
 	.byte	0x1
@@ -1558,23 +1471,22 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	.LFB17
 	.4byte	.LFE17
 	.byte	0x1
-	.byte	0x5e
+	.byte	0x5f
 	.uleb128 0x7
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0xcc
 	.4byte	0xeb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0xb
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0xcd
 	.4byte	0xeb
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.byte	0x0
 	.section	.debug_abbrev,info
@@ -1779,49 +1691,49 @@ _AX5043GeneralGetRXHalfSpeed:
 	.4byte	0x255
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0x8d1
+	.4byte	0x8ba
 	.4byte	0x2bd
 	.asciz	"AX5043GeneralRevision"
-	.4byte	0x30c
+	.4byte	0x30b
 	.asciz	"AX5043GeneralScratch"
-	.4byte	0x359
+	.4byte	0x357
 	.asciz	"AX5043GeneralRadioState"
-	.4byte	0x3ac
+	.4byte	0x3a9
 	.asciz	"AX5043GeneralXTALStatus"
-	.4byte	0x3fe
+	.4byte	0x3fa
 	.asciz	"AX5043GeneralGetRSSI"
-	.4byte	0x448
+	.4byte	0x443
 	.asciz	"AX5043GeneralSetBackgroundNoise"
-	.4byte	0x49a
+	.4byte	0x494
 	.asciz	"AX5043GeneralGetBackgroundNoise"
-	.4byte	0x4f0
+	.4byte	0x4e9
 	.asciz	"AX5043GeneralGetAGCCurrentGain"
-	.4byte	0x546
+	.4byte	0x53e
 	.asciz	"AX5043GeneralSetEnableAntennaDiversity"
-	.4byte	0x5b8
+	.4byte	0x5ae
 	.asciz	"AX5043GeneralGetAntennaDiversity"
-	.4byte	0x60d
+	.4byte	0x602
 	.asciz	"AX5043GeneralSetAntennaSelection"
-	.4byte	0x676
+	.4byte	0x669
 	.asciz	"AX5043GeneralGetAntennaSelection"
-	.4byte	0x6cb
+	.4byte	0x6bd
 	.asciz	"AX5043GeneralSetXTALLoadCap"
-	.4byte	0x725
+	.4byte	0x715
 	.asciz	"AX5043GeneralGetXTALLoadCap"
-	.4byte	0x775
+	.4byte	0x764
 	.asciz	"AX5043GeneralSetModulation"
-	.4byte	0x7d5
+	.4byte	0x7c2
 	.asciz	"AX5043GeneralGetModulation"
-	.4byte	0x824
+	.4byte	0x810
 	.asciz	"AX5043GeneralSetRXHalfSpeed"
-	.4byte	0x884
+	.4byte	0x86e
 	.asciz	"AX5043GeneralGetRXHalfSpeed"
 	.4byte	0x0
 	.section	.debug_pubtypes,info
 	.4byte	0x44
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0x8d1
+	.4byte	0x8ba
 	.4byte	0xaa
 	.asciz	"int8_t"
 	.4byte	0xeb

@@ -14,7 +14,7 @@ build/default/debug/main.o: main.c hw.h AX5043_NBM/inc/radio.h \
  AX5043_NBM/inc/AX5043/ax5043_synth.h \
  AX5043_NBM/inc/AX5043/ax5043_timer.h \
  AX5043_NBM/inc/AX5043/ax5043_txparam.h AX5043_NBM/inc/radioCommands.h \
- AX5043_NBM/inc/radioConfigs.h
+ AX5043_NBM/inc/radioConfigs.h RS/rs.h
 
 hw.h:
 
@@ -57,3 +57,5 @@ AX5043_NBM/inc/AX5043/ax5043_txparam.h:
 AX5043_NBM/inc/radioCommands.h:
 
 AX5043_NBM/inc/radioConfigs.h:
+
+RS/rs.h:

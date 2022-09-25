@@ -16,77 +16,61 @@ _conf_clock:
 	.file 1 "hw.c"
 	.loc 1 76 0
 	.set ___PA___,1
-	lnk	#0
-.LCFI0:
 	.loc 1 78 0
-	mov	_CLKDIVbits,w1
 	mov	#-64,w0
-	and	w1,w0,w0
+	and	_CLKDIVbits,WREG
 	bset	w0,#0
 	mov	w0,_CLKDIVbits
 	.loc 1 79 0
-	mov	#125,w1
-	bfins	#0,#12,w1,_PLLFBDbits
+	mov	#125,w0
+	bfins	#0,#12,w0,_PLLFBDbits
 	.loc 1 80 0
-	mov	_PLLDIVbits,w1
 	mov	#-113,w0
-	and	w1,w0,w1
-	mov	#80,w0
-	ior	w0,w1,w0
+	and	_PLLDIVbits,WREG
+	ior	#80,w0
 	mov	w0,_PLLDIVbits
 	.loc 1 81 0
-	mov	_PLLDIVbits,w1
 	mov	#-8,w0
-	and	w1,w0,w0
+	and	_PLLDIVbits,WREG
 	bset	w0,#0
 	mov	w0,_PLLDIVbits
 	.loc 1 83 0
+	mov	#154,w1
 	mov	#3,w2
 	mov	#120,w0
-	mov	#154,w1
 	mov	#_OSCCON+1,w3
 	mov.b	w0,[w3]
 	mov.b	w1,[w3]
 	mov.b	w2,[w3]
 	.loc 1 84 0
-	mov	_OSCCON,w0
-	mov	w0,w2
+	mov	_OSCCON,w2
 	bset	w2,#0
-	mov	#70,w0
 	mov	#87,w1
+	mov	#70,w0
 	mov	#_OSCCON,w3
 	mov.b	w0,[w3]
 	mov.b	w1,[w3]
 	mov.b	w2,[w3]
-	.loc 1 87 0
-	nop	
 .L2:
-	mov	_OSCCONbits,w0
-	and	w0,#1,w0
-	cp0	w0
-	.set ___BP___,0
+	.loc 1 87 0
+	btst.b	_OSCCONbits,#0
+	.set ___BP___,86
 	bra	nz,.L2
 	.loc 1 89 0
-	nop	
-.L3:
-	mov	_OSCCONbits,w1
-	mov	#32,w0
-	and	w1,w0,w0
-	cp0	w0
-	.set ___BP___,0
-	bra	z,.L3
+	mov	#32,w1
+.L6:
+	mov	_OSCCONbits,w2
+	and	w1,w2,w0
+	.set ___BP___,86
+	bra	z,.L6
+.L5:
 	.loc 1 91 0
-	nop	
-.L4:
-	mov	_OSCCONbits,w0
-	bfext	#12,#3,w0,w1
-	mov	_OSCCONbits,w0
-	bfext	#8,#3,w0,w0
+	bfext	#12,#3,_OSCCONbits,w1
+	bfext	#8,#3,_OSCCONbits,w0
 	sub.b	w1,w0,[w15]
-	.set ___BP___,0
-	bra	nz,.L4
+	.set ___BP___,86
+	bra	nz,.L5
 	.loc 1 93 0
-	ulnk	
 	return	
 	.set ___PA___,0
 .LFE1:
@@ -98,15 +82,12 @@ _conf_pins:
 .LFB2:
 	.loc 1 95 0
 	.set ___PA___,1
-	lnk	#0
-.LCFI1:
 	.loc 1 102 0
 	clr	_LATA
 	.loc 1 103 0
 	mov	#16,w0
 	mov	w0,_ANSELA
 	.loc 1 104 0
-	mov	#16,w0
 	mov	w0,_TRISA
 	.loc 1 122 0
 	clr	_CNPDB
@@ -147,7 +128,6 @@ _conf_pins:
 	.loc 1 163 0
 	clr	_ANSELD
 	.loc 1 164 0
-	mov	#-257,w0
 	mov	w0,_TRISD
 	.loc 1 166 0
 	clr	w0
@@ -159,30 +139,31 @@ _conf_pins:
 	mov	w0,_RPCON
 	.set ___PA___,1
 	.loc 1 168 0
-	mov	_RPOR15bits,w1
 	mov	#-16129,w0
-	and	w1,w0,w0
-	bset	w0,#11
-	mov	w0,_RPOR15bits
+	mov	_RPOR15bits,w2
+	and	w0,w2,w1
+	bset	w1,#11
+	mov	w1,_RPOR15bits
 	.loc 1 169 0
-	mov	_RPOR12bits,w1
-	mov	#-64,w0
-	and	w1,w0,w0
-	ior	#9,w0
-	mov	w0,_RPOR12bits
+	mov	#-64,w1
+	mov	_RPOR12bits,w3
+	and	w1,w3,w1
+	ior	#9,w1
+	mov	w1,_RPOR12bits
 	.loc 1 170 0
-	mov.b	#60,w0
-	mov.b	WREG,_RPINR18bits
+	mov.b	#60,w3
+	mov	#_RPINR18bits,w2
+	mov.b	w3,[w2]
 	.loc 1 171 0
-	mov.b	#49,w0
-	mov.b	WREG,_RPINR0bits+1
+	mov.b	#49,w3
+	mov	#_RPINR0bits+1,w2
+	mov.b	w3,[w2]
 	.loc 1 172 0
-	mov.b	#57,w0
-	mov.b	WREG,_RPINR22bits
+	mov.b	#57,w3
+	mov	#_RPINR22bits,w2
+	mov.b	w3,[w2]
 	.loc 1 173 0
-	mov	_RPOR14bits,w1
-	mov	#-16129,w0
-	and	w1,w0,w0
+	and	_RPOR14bits,WREG
 	bset	w0,#8
 	mov	w0,_RPOR14bits
 	.loc 1 175 0
@@ -197,7 +178,6 @@ _conf_pins:
 	.loc 1 177 0
 	bset.b	_INTCON2bits+1,#7
 	.loc 1 178 0
-	ulnk	
 	return	
 	.set ___PA___,0
 .LFE2:
@@ -209,15 +189,13 @@ _conf_spi_radio:
 .LFB3:
 	.loc 1 181 0
 	.set ___PA___,1
-	lnk	#0
-.LCFI2:
 	.loc 1 182 0
 	bclr.b	_IFS1bits+1,#6
 	.loc 1 183 0
 	bclr.b	_IFS1bits+1,#5
 	.loc 1 188 0
-	mov	#10,w1
-	bfins	#0,#13,w1,_SPI2BRGLbits
+	mov	#10,w0
+	bfins	#0,#13,w0,_SPI2BRGLbits
 	.loc 1 190 0
 	bclr.b	_SPI2CON1bits+1,#2
 	.loc 1 191 0
@@ -233,10 +211,8 @@ _conf_spi_radio:
 	.loc 1 198 0
 	bclr.b	_SPI2CON1Hbits,#4
 	.loc 1 201 0
-	mov	_SPI2CON2Lbits,w1
 	mov	#-32,w0
-	and	w1,w0,w0
-	mov	w0,_SPI2CON2Lbits
+	and	_SPI2CON2Lbits
 	.loc 1 203 0
 	bclr.b	_SPI2CON1bits+1,#5
 	.loc 1 205 0
@@ -244,7 +220,6 @@ _conf_spi_radio:
 	.loc 1 206 0
 	bset.b	_SPI2CON1bits+1,#7
 	.loc 1 208 0
-	ulnk	
 	return	
 	.set ___PA___,0
 .LFE3:
@@ -256,23 +231,14 @@ _rf_cs:
 .LFB4:
 	.loc 1 210 0
 	.set ___PA___,1
-	lnk	#2
-.LCFI3:
-	mov.b	w0,[w14]
 	.loc 1 211 0
-	mov.b	[w14],w1
-	and.b	w1,#1,w0
-	and.b	w0,#1,w0
-	and.b	w0,#1,w0
-	ze	w0,w0
 	and	w0,#1,w0
 	sl	w0,#4,w0
 	mov	_PORTBbits,w1
 	bclr	w1,#4
-	ior	w0,w1,w0
-	mov	w0,_PORTBbits
+	ior	w0,w1,w1
+	mov	w1,_PORTBbits
 	.loc 1 212 0
-	ulnk	
 	return	
 	.set ___PA___,0
 .LFE4:
@@ -301,13 +267,6 @@ _rf_cs:
 	.4byte	.Lframe0
 	.4byte	.LFB1
 	.4byte	.LFE1-.LFB1
-	.byte	0x4
-	.4byte	.LCFI0-.LFB1
-	.byte	0x12
-	.uleb128 0xe
-	.sleb128 -3
-	.byte	0x8e
-	.uleb128 0x2
 	.align	4
 .LEFDE0:
 .LSFDE2:
@@ -316,13 +275,6 @@ _rf_cs:
 	.4byte	.Lframe0
 	.4byte	.LFB2
 	.4byte	.LFE2-.LFB2
-	.byte	0x4
-	.4byte	.LCFI1-.LFB2
-	.byte	0x12
-	.uleb128 0xe
-	.sleb128 -3
-	.byte	0x8e
-	.uleb128 0x2
 	.align	4
 .LEFDE2:
 .LSFDE4:
@@ -331,13 +283,6 @@ _rf_cs:
 	.4byte	.Lframe0
 	.4byte	.LFB3
 	.4byte	.LFE3-.LFB3
-	.byte	0x4
-	.4byte	.LCFI2-.LFB3
-	.byte	0x12
-	.uleb128 0xe
-	.sleb128 -3
-	.byte	0x8e
-	.uleb128 0x2
 	.align	4
 .LEFDE4:
 .LSFDE6:
@@ -346,13 +291,6 @@ _rf_cs:
 	.4byte	.Lframe0
 	.4byte	.LFB4
 	.4byte	.LFE4-.LFB4
-	.byte	0x4
-	.4byte	.LCFI3-.LFB4
-	.byte	0x12
-	.uleb128 0xe
-	.sleb128 -3
-	.byte	0x8e
-	.uleb128 0x2
 	.align	4
 .LEFDE6:
 	.section	.text,code
@@ -360,7 +298,7 @@ _rf_cs:
 	.file 2 "/opt/microchip/xc16/v2.00/bin/bin/../../include/bits/alltypes.h"
 	.file 3 "/opt/microchip/mplabx/v5.50/packs/Microchip/dsPIC33CK-MC_DFP/1.3.56/xc16/bin/../support/dsPIC33C/h/p33CK64MC105.h"
 	.section	.debug_info,info
-	.4byte	0x1b25
+	.4byte	0x1b24
 	.2byte	0x2
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
@@ -2965,7 +2903,7 @@ _rf_cs:
 	.4byte	.LFB1
 	.4byte	.LFE1
 	.byte	0x1
-	.byte	0x5e
+	.byte	0x5f
 	.uleb128 0xb
 	.byte	0x1
 	.asciz	"conf_pins"
@@ -2974,7 +2912,7 @@ _rf_cs:
 	.4byte	.LFB2
 	.4byte	.LFE2
 	.byte	0x1
-	.byte	0x5e
+	.byte	0x5f
 	.uleb128 0xb
 	.byte	0x1
 	.asciz	"conf_spi_radio"
@@ -2983,7 +2921,7 @@ _rf_cs:
 	.4byte	.LFB3
 	.4byte	.LFE3
 	.byte	0x1
-	.byte	0x5e
+	.byte	0x5f
 	.uleb128 0xc
 	.byte	0x1
 	.asciz	"rf_cs"
@@ -2993,22 +2931,21 @@ _rf_cs:
 	.4byte	.LFB4
 	.4byte	.LFE4
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x166b
+	.byte	0x5f
+	.4byte	0x166a
 	.uleb128 0xd
 	.asciz	"status"
 	.byte	0x1
 	.byte	0xd2
 	.4byte	0xbb
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x1
+	.byte	0x50
 	.byte	0x0
 	.uleb128 0xe
 	.4byte	.LASF0
 	.byte	0x3
 	.2byte	0xa2f
-	.4byte	0x1679
+	.4byte	0x1678
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3017,7 +2954,7 @@ _rf_cs:
 	.4byte	.LASF1
 	.byte	0x3
 	.2byte	0xa6c
-	.4byte	0x168c
+	.4byte	0x168b
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3026,7 +2963,7 @@ _rf_cs:
 	.4byte	.LASF2
 	.byte	0x3
 	.2byte	0xa92
-	.4byte	0x169f
+	.4byte	0x169e
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3035,7 +2972,7 @@ _rf_cs:
 	.4byte	.LASF3
 	.byte	0x3
 	.2byte	0xaab
-	.4byte	0x16b2
+	.4byte	0x16b1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3044,7 +2981,7 @@ _rf_cs:
 	.4byte	.LASF4
 	.byte	0x3
 	.2byte	0xaf1
-	.4byte	0x16c5
+	.4byte	0x16c4
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3053,7 +2990,7 @@ _rf_cs:
 	.4byte	.LASF5
 	.byte	0x3
 	.2byte	0x1138
-	.4byte	0x16d8
+	.4byte	0x16d7
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3062,7 +2999,7 @@ _rf_cs:
 	.4byte	.LASF6
 	.byte	0x3
 	.2byte	0x11eb
-	.4byte	0x16eb
+	.4byte	0x16ea
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3071,7 +3008,7 @@ _rf_cs:
 	.4byte	.LASF7
 	.byte	0x3
 	.2byte	0x1427
-	.4byte	0x16fe
+	.4byte	0x16fd
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3080,7 +3017,7 @@ _rf_cs:
 	.4byte	.LASF8
 	.byte	0x3
 	.2byte	0x2043
-	.4byte	0x1711
+	.4byte	0x1710
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3089,7 +3026,7 @@ _rf_cs:
 	.4byte	.LASF9
 	.byte	0x3
 	.2byte	0x20a3
-	.4byte	0x1724
+	.4byte	0x1723
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3098,7 +3035,7 @@ _rf_cs:
 	.4byte	.LASF10
 	.byte	0x3
 	.2byte	0x20c3
-	.4byte	0x1737
+	.4byte	0x1736
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3107,7 +3044,7 @@ _rf_cs:
 	.4byte	.LASF11
 	.byte	0x3
 	.2byte	0x2196
-	.4byte	0x174a
+	.4byte	0x1749
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3116,7 +3053,7 @@ _rf_cs:
 	.4byte	.LASF12
 	.byte	0x3
 	.2byte	0x21a8
-	.4byte	0x175d
+	.4byte	0x175c
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3125,7 +3062,7 @@ _rf_cs:
 	.4byte	.LASF13
 	.byte	0x3
 	.2byte	0x21b1
-	.4byte	0x1770
+	.4byte	0x176f
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3134,7 +3071,7 @@ _rf_cs:
 	.asciz	"ANSELA"
 	.byte	0x3
 	.2byte	0x21d8
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3143,35 +3080,35 @@ _rf_cs:
 	.asciz	"TRISA"
 	.byte	0x3
 	.2byte	0x21e3
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"LATA"
 	.byte	0x3
 	.2byte	0x21f9
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"ANSELB"
 	.byte	0x3
 	.2byte	0x225b
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"TRISB"
 	.byte	0x3
 	.2byte	0x226a
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF14
 	.byte	0x3
 	.2byte	0x2293
-	.4byte	0x17d9
+	.4byte	0x17d8
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3180,49 +3117,49 @@ _rf_cs:
 	.asciz	"LATB"
 	.byte	0x3
 	.2byte	0x2296
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"CNPUB"
 	.byte	0x3
 	.2byte	0x22c2
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"CNPDB"
 	.byte	0x3
 	.2byte	0x22d8
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"ANSELC"
 	.byte	0x3
 	.2byte	0x2350
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"TRISC"
 	.byte	0x3
 	.2byte	0x235d
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"LATC"
 	.byte	0x3
 	.2byte	0x2385
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF15
 	.byte	0x3
 	.2byte	0x23dc
-	.4byte	0x184b
+	.4byte	0x184a
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3231,7 +3168,7 @@ _rf_cs:
 	.4byte	.LASF16
 	.byte	0x3
 	.2byte	0x23f0
-	.4byte	0x185e
+	.4byte	0x185d
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3240,7 +3177,7 @@ _rf_cs:
 	.4byte	.LASF17
 	.byte	0x3
 	.2byte	0x2418
-	.4byte	0x1871
+	.4byte	0x1870
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3249,35 +3186,35 @@ _rf_cs:
 	.asciz	"ANSELD"
 	.byte	0x3
 	.2byte	0x242f
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"TRISD"
 	.byte	0x3
 	.2byte	0x2439
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"LATD"
 	.byte	0x3
 	.2byte	0x2455
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"OSCCON"
 	.byte	0x3
 	.2byte	0x2666
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF18
 	.byte	0x3
 	.2byte	0x2681
-	.4byte	0x18c5
+	.4byte	0x18c4
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3286,7 +3223,7 @@ _rf_cs:
 	.4byte	.LASF19
 	.byte	0x3
 	.2byte	0x26a5
-	.4byte	0x18d8
+	.4byte	0x18d7
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3295,7 +3232,7 @@ _rf_cs:
 	.4byte	.LASF20
 	.byte	0x3
 	.2byte	0x26be
-	.4byte	0x18eb
+	.4byte	0x18ea
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3304,7 +3241,7 @@ _rf_cs:
 	.4byte	.LASF21
 	.byte	0x3
 	.2byte	0x26d9
-	.4byte	0x18fe
+	.4byte	0x18fd
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xf
@@ -3313,259 +3250,259 @@ _rf_cs:
 	.4byte	.LASF0
 	.byte	0x3
 	.2byte	0xa2f
-	.4byte	0x1679
+	.4byte	0x1678
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF1
 	.byte	0x3
 	.2byte	0xa6c
-	.4byte	0x168c
+	.4byte	0x168b
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF2
 	.byte	0x3
 	.2byte	0xa92
-	.4byte	0x169f
+	.4byte	0x169e
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF3
 	.byte	0x3
 	.2byte	0xaab
-	.4byte	0x16b2
+	.4byte	0x16b1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF4
 	.byte	0x3
 	.2byte	0xaf1
-	.4byte	0x16c5
+	.4byte	0x16c4
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF5
 	.byte	0x3
 	.2byte	0x1138
-	.4byte	0x16d8
+	.4byte	0x16d7
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF6
 	.byte	0x3
 	.2byte	0x11eb
-	.4byte	0x16eb
+	.4byte	0x16ea
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF7
 	.byte	0x3
 	.2byte	0x1427
-	.4byte	0x16fe
+	.4byte	0x16fd
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF8
 	.byte	0x3
 	.2byte	0x2043
-	.4byte	0x1711
+	.4byte	0x1710
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF9
 	.byte	0x3
 	.2byte	0x20a3
-	.4byte	0x1724
+	.4byte	0x1723
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF10
 	.byte	0x3
 	.2byte	0x20c3
-	.4byte	0x1737
+	.4byte	0x1736
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF11
 	.byte	0x3
 	.2byte	0x2196
-	.4byte	0x174a
+	.4byte	0x1749
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF12
 	.byte	0x3
 	.2byte	0x21a8
-	.4byte	0x175d
+	.4byte	0x175c
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF13
 	.byte	0x3
 	.2byte	0x21b1
-	.4byte	0x1770
+	.4byte	0x176f
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"ANSELA"
 	.byte	0x3
 	.2byte	0x21d8
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"TRISA"
 	.byte	0x3
 	.2byte	0x21e3
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"LATA"
 	.byte	0x3
 	.2byte	0x21f9
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"ANSELB"
 	.byte	0x3
 	.2byte	0x225b
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"TRISB"
 	.byte	0x3
 	.2byte	0x226a
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF14
 	.byte	0x3
 	.2byte	0x2293
-	.4byte	0x17d9
+	.4byte	0x17d8
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"LATB"
 	.byte	0x3
 	.2byte	0x2296
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"CNPUB"
 	.byte	0x3
 	.2byte	0x22c2
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"CNPDB"
 	.byte	0x3
 	.2byte	0x22d8
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"ANSELC"
 	.byte	0x3
 	.2byte	0x2350
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"TRISC"
 	.byte	0x3
 	.2byte	0x235d
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"LATC"
 	.byte	0x3
 	.2byte	0x2385
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF15
 	.byte	0x3
 	.2byte	0x23dc
-	.4byte	0x184b
+	.4byte	0x184a
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF16
 	.byte	0x3
 	.2byte	0x23f0
-	.4byte	0x185e
+	.4byte	0x185d
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF17
 	.byte	0x3
 	.2byte	0x2418
-	.4byte	0x1871
+	.4byte	0x1870
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"ANSELD"
 	.byte	0x3
 	.2byte	0x242f
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"TRISD"
 	.byte	0x3
 	.2byte	0x2439
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"LATD"
 	.byte	0x3
 	.2byte	0x2455
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.asciz	"OSCCON"
 	.byte	0x3
 	.2byte	0x2666
-	.4byte	0x1786
+	.4byte	0x1785
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF18
 	.byte	0x3
 	.2byte	0x2681
-	.4byte	0x18c5
+	.4byte	0x18c4
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF19
 	.byte	0x3
 	.2byte	0x26a5
-	.4byte	0x18d8
+	.4byte	0x18d7
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF20
 	.byte	0x3
 	.2byte	0x26be
-	.4byte	0x18eb
+	.4byte	0x18ea
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xe
 	.4byte	.LASF21
 	.byte	0x3
 	.2byte	0x26d9
-	.4byte	0x18fe
+	.4byte	0x18fd
 	.byte	0x1
 	.byte	0x1
 	.byte	0x0
@@ -3807,7 +3744,7 @@ _rf_cs:
 	.4byte	0x48
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0x1b29
+	.4byte	0x1b28
 	.4byte	0x15f2
 	.asciz	"conf_clock"
 	.4byte	0x160b
@@ -3821,7 +3758,7 @@ _rf_cs:
 	.4byte	0x313
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0x1b29
+	.4byte	0x1b28
 	.4byte	0xbb
 	.asciz	"uint8_t"
 	.4byte	0xdb

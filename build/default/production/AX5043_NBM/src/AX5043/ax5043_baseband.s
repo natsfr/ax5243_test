@@ -16,38 +16,34 @@ _AX5043BasebandSetTuneValue:
 	.file 1 "AX5043_NBM/src/AX5043/ax5043_baseband.c"
 	.loc 1 9 0
 	.set ___PA___,1
-	lnk	#6
+	lnk	#4
 .LCFI0:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#3,w0
-	mov.b	w1,[w0]
+	mov.d	w8,[w15++]
+.LCFI1:
+	mov.b	w0,w8
+	mov.b	w1,w9
 	.loc 1 11 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#392,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 12 0
-	mov.b	[w14],w0
-	mov.b	w0,w1
 	mov.b	#-16,w0
-	and.b	w1,w0,w1
-	add	w14,#3,w0
-	mov.b	[w0],w0
-	ior.b	w1,w0,w0
-	mov.b	w0,[w14]
+	mov.b	[w15-8],w1
+	and.b	w1,w0,w0
+	ior.b	w9,w0,w0
+	mov.b	w0,[w15-8]
 	.loc 1 13 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#392,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteLongAddress
 	.loc 1 14 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -60,21 +56,18 @@ _AX5043BasebandGetTuneValue:
 .LFB1:
 	.loc 1 21 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI1:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI2:
 	.loc 1 23 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#392,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 24 0
-	mov.b	[w14],w0
-	and.b	w0,#15,w0
+	mov.b	[w15-4],w1
+	and.b	w1,#15,w0
 	.loc 1 25 0
 	ulnk	
 	return	
@@ -88,40 +81,34 @@ _AX5043BasebandSetTuneRunning:
 .LFB2:
 	.loc 1 33 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI2:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#3,w0
-	mov.b	w1,[w0]
+	lnk	#4
+.LCFI3:
+	mov.d	w8,[w15++]
+.LCFI4:
+	mov.b	w0,w9
+	mov.b	w1,w8
 	.loc 1 35 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#392,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 36 0
-	mov.b	[w14],w0
-	mov.b	w0,w1
-	bclr.b	w1,#4
-	add	w14,#3,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	sl	w0,#4,w0
-	mov.b	w0,w0
-	ior.b	w1,w0,w0
-	mov.b	w0,[w14]
+	sl	w8,#4,w8
+	mov.b	[w15-8],w0
+	bclr.b	w0,#4
+	ior.b	w8,w0,w0
+	mov.b	w0,[w15-8]
 	.loc 1 37 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#392,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteLongAddress
 	.loc 1 38 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -134,24 +121,19 @@ _AX5043BasebandGetTuneRunning:
 .LFB3:
 	.loc 1 45 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI3:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI5:
 	.loc 1 47 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#392,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 48 0
-	mov.b	[w14],w0
-	ze	w0,w0
-	and	w0,#16,w0
-	asr	w0,#4,w0
-	mov.b	w0,w0
+	mov.b	[w15-4],w1
+	ze	w1,w0
+	bfext	#4,#1,w0,w0
 	.loc 1 49 0
 	ulnk	
 	return	
@@ -165,38 +147,34 @@ _AX5043BasebandSetGainOffsetCompCapA:
 .LFB4:
 	.loc 1 57 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI4:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#3,w0
-	mov.b	w1,[w0]
+	lnk	#4
+.LCFI6:
+	mov.d	w8,[w15++]
+.LCFI7:
+	mov.b	w0,w8
+	mov.b	w1,w9
 	.loc 1 59 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#393,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 60 0
-	mov.b	[w14],w0
-	mov.b	w0,w1
 	mov.b	#-8,w0
-	and.b	w1,w0,w1
-	add	w14,#3,w0
-	mov.b	[w0],w0
-	ior.b	w1,w0,w0
-	mov.b	w0,[w14]
+	mov.b	[w15-8],w1
+	and.b	w1,w0,w0
+	ior.b	w9,w0,w0
+	mov.b	w0,[w15-8]
 	.loc 1 61 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#393,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w8,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteLongAddress
 	.loc 1 62 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -209,21 +187,18 @@ _AX5043BasebandGetGainOffsetCompCapA:
 .LFB5:
 	.loc 1 69 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI5:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI8:
 	.loc 1 71 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#393,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 72 0
-	mov.b	[w14],w0
-	and.b	w0,#7,w0
+	mov.b	[w15-4],w1
+	and.b	w1,#7,w0
 	.loc 1 73 0
 	ulnk	
 	return	
@@ -237,41 +212,35 @@ _AX5043BasebandSetGainOffsetCompCapB:
 .LFB6:
 	.loc 1 81 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI6:
-	inc2	w14,w2
-	mov.b	w0,[w2]
-	add	w14,#3,w0
-	mov.b	w1,[w0]
+	lnk	#4
+.LCFI9:
+	mov.d	w8,[w15++]
+.LCFI10:
+	mov.b	w0,w9
+	mov.b	w1,w8
 	.loc 1 83 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#393,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 84 0
-	mov.b	[w14],w0
-	mov.b	w0,w1
+	sl	w8,#4,w8
 	mov.b	#-113,w0
-	and.b	w1,w0,w1
-	add	w14,#3,w0
-	mov.b	[w0],w0
-	ze	w0,w0
-	sl	w0,#4,w0
-	mov.b	w0,w0
-	ior.b	w1,w0,w0
-	mov.b	w0,[w14]
+	mov.b	[w15-8],w1
+	and.b	w1,w0,w0
+	ior.b	w8,w0,w0
+	mov.b	w0,[w15-8]
 	.loc 1 85 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#8,w3
 	mov	#393,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w9,w1
+	sub	w15,#6,w0
 	rcall	_AX5043WriteLongAddress
 	.loc 1 86 0
+	mov.d	[--w15],w8
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -284,25 +253,19 @@ _AX5043BasebandGetGainOffsetCompCapB:
 .LFB7:
 	.loc 1 93 0
 	.set ___PA___,1
-	lnk	#6
-.LCFI7:
-	inc2	w14,w1
-	mov.b	w0,[w1]
+	lnk	#4
+.LCFI11:
 	.loc 1 95 0
-	add	w14,#4,w0
 	mov	#1,w4
-	mov	w14,w3
+	sub	w15,#4,w3
 	mov	#393,w2
-	inc2	w14,w1
-	mov.b	[w1],w1
+	mov.b	w0,w1
+	dec2	w15,w0
 	rcall	_AX5043ReadLongAddress
 	.loc 1 96 0
-	mov.b	[w14],w0
-	ze	w0,w1
-	mov	#112,w0
-	and	w1,w0,w0
-	asr	w0,#4,w0
-	mov.b	w0,w0
+	mov.b	[w15-4],w1
+	ze	w1,w0
+	bfext	#4,#3,w0,w0
 	.loc 1 97 0
 	ulnk	
 	return	
@@ -340,6 +303,10 @@ _AX5043BasebandGetGainOffsetCompCapB:
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI1-.LCFI0
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE0:
 .LSFDE2:
@@ -349,7 +316,7 @@ _AX5043BasebandGetGainOffsetCompCapB:
 	.4byte	.LFB1
 	.4byte	.LFE1-.LFB1
 	.byte	0x4
-	.4byte	.LCFI1-.LFB1
+	.4byte	.LCFI2-.LFB1
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -364,12 +331,16 @@ _AX5043BasebandGetGainOffsetCompCapB:
 	.4byte	.LFB2
 	.4byte	.LFE2-.LFB2
 	.byte	0x4
-	.4byte	.LCFI2-.LFB2
+	.4byte	.LCFI3-.LFB2
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI4-.LCFI3
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE4:
 .LSFDE6:
@@ -379,7 +350,7 @@ _AX5043BasebandGetGainOffsetCompCapB:
 	.4byte	.LFB3
 	.4byte	.LFE3-.LFB3
 	.byte	0x4
-	.4byte	.LCFI3-.LFB3
+	.4byte	.LCFI5-.LFB3
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -394,12 +365,16 @@ _AX5043BasebandGetGainOffsetCompCapB:
 	.4byte	.LFB4
 	.4byte	.LFE4-.LFB4
 	.byte	0x4
-	.4byte	.LCFI4-.LFB4
+	.4byte	.LCFI6-.LFB4
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI7-.LCFI6
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE8:
 .LSFDE10:
@@ -409,7 +384,7 @@ _AX5043BasebandGetGainOffsetCompCapB:
 	.4byte	.LFB5
 	.4byte	.LFE5-.LFB5
 	.byte	0x4
-	.4byte	.LCFI5-.LFB5
+	.4byte	.LCFI8-.LFB5
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -424,12 +399,16 @@ _AX5043BasebandGetGainOffsetCompCapB:
 	.4byte	.LFB6
 	.4byte	.LFE6-.LFB6
 	.byte	0x4
-	.4byte	.LCFI6-.LFB6
+	.4byte	.LCFI9-.LFB6
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
 	.byte	0x8e
 	.uleb128 0x2
+	.byte	0x4
+	.4byte	.LCFI10-.LCFI9
+	.byte	0x88
+	.uleb128 0x5
 	.align	4
 .LEFDE12:
 .LSFDE14:
@@ -439,7 +418,7 @@ _AX5043BasebandGetGainOffsetCompCapB:
 	.4byte	.LFB7
 	.4byte	.LFE7-.LFB7
 	.byte	0x4
-	.4byte	.LCFI7-.LFB7
+	.4byte	.LCFI11-.LFB7
 	.byte	0x12
 	.uleb128 0xe
 	.sleb128 -3
@@ -451,7 +430,7 @@ _AX5043BasebandGetGainOffsetCompCapB:
 .Letext0:
 	.file 2 "/opt/microchip/xc16/v2.00/bin/bin/../../include/bits/alltypes.h"
 	.section	.debug_info,info
-	.4byte	0x402
+	.4byte	0x3f6
 	.2byte	0x2
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
@@ -509,32 +488,30 @@ _AX5043BasebandGetGainOffsetCompCapB:
 	.4byte	.LFB0
 	.4byte	.LFE0
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x198
+	.byte	0x5f
+	.4byte	0x196
 	.uleb128 0x5
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x9
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0x6
 	.asciz	"value"
 	.byte	0x1
 	.byte	0x9
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 3
+	.byte	0x1
+	.byte	0x59
 	.uleb128 0x7
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0xa
 	.4byte	0xde
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0x8
 	.byte	0x1
@@ -546,24 +523,23 @@ _AX5043BasebandGetGainOffsetCompCapB:
 	.4byte	.LFB1
 	.4byte	.LFE1
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x1e7
+	.byte	0x5f
+	.4byte	0x1e4
 	.uleb128 0x5
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x15
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x7
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x16
 	.4byte	0xde
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x4
 	.byte	0x1
@@ -574,32 +550,30 @@ _AX5043BasebandGetGainOffsetCompCapB:
 	.4byte	.LFB2
 	.4byte	.LFE2
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x244
+	.byte	0x5f
+	.4byte	0x23f
 	.uleb128 0x5
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x21
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x59
 	.uleb128 0x6
 	.asciz	"start"
 	.byte	0x1
 	.byte	0x21
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 3
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0x7
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x22
 	.4byte	0xde
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0x8
 	.byte	0x1
@@ -611,24 +585,23 @@ _AX5043BasebandGetGainOffsetCompCapB:
 	.4byte	.LFB3
 	.4byte	.LFE3
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x295
+	.byte	0x5f
+	.4byte	0x28f
 	.uleb128 0x5
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x2d
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x7
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x2e
 	.4byte	0xde
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x4
 	.byte	0x1
@@ -639,32 +612,30 @@ _AX5043BasebandGetGainOffsetCompCapB:
 	.4byte	.LFB4
 	.4byte	.LFE4
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x2f7
+	.byte	0x5f
+	.4byte	0x2ef
 	.uleb128 0x5
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x39
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0x6
 	.asciz	"cap"
 	.byte	0x1
 	.byte	0x39
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 3
+	.byte	0x1
+	.byte	0x59
 	.uleb128 0x7
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x3a
 	.4byte	0xde
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0x8
 	.byte	0x1
@@ -676,24 +647,23 @@ _AX5043BasebandGetGainOffsetCompCapB:
 	.4byte	.LFB5
 	.4byte	.LFE5
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x34f
+	.byte	0x5f
+	.4byte	0x346
 	.uleb128 0x5
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x45
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x7
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x46
 	.4byte	0xde
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.uleb128 0x4
 	.byte	0x1
@@ -704,32 +674,30 @@ _AX5043BasebandGetGainOffsetCompCapB:
 	.4byte	.LFB6
 	.4byte	.LFE6
 	.byte	0x1
-	.byte	0x5e
-	.4byte	0x3b1
+	.byte	0x5f
+	.4byte	0x3a6
 	.uleb128 0x5
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x51
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x59
 	.uleb128 0x6
 	.asciz	"cap"
 	.byte	0x1
 	.byte	0x51
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 3
+	.byte	0x1
+	.byte	0x58
 	.uleb128 0x7
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x52
 	.4byte	0xde
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -8
 	.byte	0x0
 	.uleb128 0x9
 	.byte	0x1
@@ -741,23 +709,22 @@ _AX5043BasebandGetGainOffsetCompCapB:
 	.4byte	.LFB7
 	.4byte	.LFE7
 	.byte	0x1
-	.byte	0x5e
+	.byte	0x5f
 	.uleb128 0x5
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x5d
 	.4byte	0xde
-	.byte	0x2
-	.byte	0x7e
-	.sleb128 2
+	.byte	0x1
+	.byte	0x50
 	.uleb128 0x7
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x5e
 	.4byte	0xde
 	.byte	0x2
-	.byte	0x7e
-	.sleb128 0
+	.byte	0x91
+	.sleb128 -4
 	.byte	0x0
 	.byte	0x0
 	.section	.debug_abbrev,info
@@ -925,29 +892,29 @@ _AX5043BasebandGetGainOffsetCompCapB:
 	.4byte	0x12e
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0x406
+	.4byte	0x3fa
 	.4byte	0x13d
 	.asciz	"AX5043BasebandSetTuneValue"
-	.4byte	0x198
+	.4byte	0x196
 	.asciz	"AX5043BasebandGetTuneValue"
-	.4byte	0x1e7
+	.4byte	0x1e4
 	.asciz	"AX5043BasebandSetTuneRunning"
-	.4byte	0x244
+	.4byte	0x23f
 	.asciz	"AX5043BasebandGetTuneRunning"
-	.4byte	0x295
+	.4byte	0x28f
 	.asciz	"AX5043BasebandSetGainOffsetCompCapA"
-	.4byte	0x2f7
+	.4byte	0x2ef
 	.asciz	"AX5043BasebandGetGainOffsetCompCapA"
-	.4byte	0x34f
+	.4byte	0x346
 	.asciz	"AX5043BasebandSetGainOffsetCompCapB"
-	.4byte	0x3b1
+	.4byte	0x3a6
 	.asciz	"AX5043BasebandGetGainOffsetCompCapB"
 	.4byte	0x0
 	.section	.debug_pubtypes,info
 	.4byte	0x1a
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0x406
+	.4byte	0x3fa
 	.4byte	0xde
 	.asciz	"uint8_t"
 	.4byte	0x0
